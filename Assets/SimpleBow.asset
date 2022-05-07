@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72e84b3bbfe63d745859cbf388d74179, type: 3}
+  m_Name: SimpleBow
+  m_EditorClassIdentifier: 
+  _model: {fileID: 7217052319671039670, guid: 73b75ddd48d117f48ab4bb9d07a15abf, type: 3}
+  _arrowType: {fileID: 11400000, guid: d4cf3dfd74fe651449ad1d8f70454b70, type: 2}

@@ -1,18 +1,47 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Player _target;
+    [SerializeField] private Color _deathColor;
+    [SerializeField] private Renderer _renderer;
+
+    private Animator _animator;
+    private EnemyStateMachine _enemyStateMachine;
+    private List<State> _states = new List<State>();
+    private List<Transition> _transitions = new List<Transition>();
+
+    public Player Target => _target;
+
+    private void Awake()
     {
-        
+        _animator = GetComponent<Animator>();
+        _enemyStateMachine = GetComponent<EnemyStateMachine>();
+        _states.AddRange(GetComponents<State>());
+        _transitions.AddRange(GetComponents<Transition>());
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetTarget(Player target)
     {
-        
+        _target = target;
+    }
+
+    public void Kill()
+    {
+        _animator.enabled = false;
+        _enemyStateMachine.enabled = false;
+
+        foreach (var state in _states)
+        {
+            state.enabled = false;
+        }
+
+        foreach (var transition in _transitions)
+        {
+            transition.enabled = false;
+        }
+
+        _renderer.material.color = _deathColor;
     }
 }

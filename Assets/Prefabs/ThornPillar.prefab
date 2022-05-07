@@ -172,6 +172,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3642562062810622719}
   - component: {fileID: 28060182475595612}
+  - component: {fileID: 332099236384265968}
   m_Layer: 0
   m_Name: ThornPillar
   m_TagString: Untagged
@@ -205,12 +206,26 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4163342874497544261}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.45231763
+  m_Radius: 0.6
   m_Height: 1.4958447
   m_Direction: 1
   m_Center: {x: 0, y: 0.74792236, z: -0.000000059604645}
+--- !u!114 &332099236384265968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4163342874497544261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da510778510f10846bf858e764057f3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotateSpeed: 60
+  _movePoints: []
 --- !u!1 &8386135411566459842
 GameObject:
   m_ObjectHideFlags: 0

@@ -25,7 +25,6 @@ public class Mover : MonoBehaviour
     private void Update()
     {
         HorizontalPositioning();
-        //_rigidbody.velocity = Vector3.left * _speed;
         transform.Translate(Vector3.left * Time.deltaTime * _speed);
     }
 

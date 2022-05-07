@@ -17,4 +17,17 @@ public class FollowToPlayer : MonoBehaviour
     {
         transform.position = new Vector3(_player.transform.position.x, _player.transform.position.y, 0) + _offset;
     }
+    private void OnEnable()
+    {
+        _player.Killed += OnTargetKilled;
+    }
+
+    private void OnDisable()
+    {
+        _player.Killed -= OnTargetKilled;
+    }
+    private void OnTargetKilled()
+    {
+        this.enabled = false;
+    }
 }

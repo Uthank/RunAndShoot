@@ -14,7 +14,6 @@ public class Crowd : MonoBehaviour
     private void Awake()
     {
         _player = GetComponent<Player>();
-        AddAllies(15);
     }
 
     private void AddAllies(int count = 1)
@@ -29,5 +28,25 @@ public class Crowd : MonoBehaviour
             ally.SetPlayer(_player);
             _allies.Add(ally);
         }
+    }
+
+    public bool Damage(Ally allyToKill = null)
+    {
+        if (_allies.Count == 0)
+            return false;
+
+        if (allyToKill == null)
+        {
+            Ally ally = _allies[0];
+            _allies.RemoveAt(0);
+            Destroy(ally.gameObject);
+        }
+        else
+        {
+            _allies.Remove(allyToKill);
+            Destroy(allyToKill.gameObject);
+        }
+
+        return true;
     }
 }
