@@ -8,7 +8,7 @@ public class CloseRangeToPunchTransition : Transition
 
     private void Update()
     {
-        if (Target != null)
+        if (Target.IsAlive == true)
         {
             if (Vector3.Distance(transform.position, Target.transform.position) < _detectionDistance)
             {

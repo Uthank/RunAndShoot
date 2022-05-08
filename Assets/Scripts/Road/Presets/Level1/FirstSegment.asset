@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0674e0e9ee53b8b4199b66428a2b03ab, type: 3}
+  m_Name: FirstSegment
+  m_EditorClassIdentifier: 
+  _upgradeSegment: {fileID: 11400000, guid: 106afefad2430634488de18aee4949d0, type: 2}
+  _leftUpgradeGoodness: 1
+  _leftUpgradeType: 1
+  _leftValue: 2
+  _rightGoodness: 0
+  _rightUpgradeType: 1
+  _rightValue: 3
+  _segments:
+  - {fileID: 11400000, guid: f54fb23eb10a16646bd3e94bbc49d0b4, type: 2}
+  - {fileID: 11400000, guid: ffed4df135328f94f992ee3a4fd48c71, type: 2}
+  - {fileID: 11400000, guid: f54fb23eb10a16646bd3e94bbc49d0b4, type: 2}

@@ -1,10 +1,16 @@
-using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : MonoBehaviour, IKillable
+public class Player : Archer, IKillable
 {
+    [SerializeField] private Color _aliveColor;
+    [SerializeField] private Renderer _renderer;
+    [SerializeField] private Color _deathColor;
+
     private Crowd _crowd;
+    private Ragdoll _ragdoll;
+    private Attacker _attacker;
+    private Mover _mover;
 
     public UnityAction Killed;
 
@@ -13,6 +19,10 @@ public class Player : MonoBehaviour, IKillable
     private void Awake()
     {
         _crowd = GetComponent<Crowd>();
+        _renderer.material.color = _aliveColor;
+        _ragdoll = GetComponent<Ragdoll>();
+        _attacker = GetComponent<Attacker>();
+        _mover = GetComponent<Mover>();
     }
 
     public void Damage()
@@ -25,6 +35,10 @@ public class Player : MonoBehaviour, IKillable
     {
         Killed?.Invoke();
         IsAlive = false;
-        Destroy(gameObject);
+        _mover.DisableInput();
+        _mover.enabled = false;
+        _attacker.DisableInput();
+        _ragdoll.TurnOnRagdoll();
+        _renderer.material.color = _deathColor;
     }
 }

@@ -13,7 +13,7 @@ public class PunchState : State
 
     private void OnEnable()
     {
-        if (Target != null)
+        if (Target.IsAlive == true)
         {
             _animator.SetTrigger(_punchAnimation);
         }
@@ -21,7 +21,7 @@ public class PunchState : State
 
     public void Hit()
     {
-        if (Target != null)
+        if (Target.IsAlive == true)
         {
             Target.Damage();
             Destroy(gameObject);

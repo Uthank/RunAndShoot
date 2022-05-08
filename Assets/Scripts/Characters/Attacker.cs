@@ -12,14 +12,15 @@ public class Attacker : MonoBehaviour
     [SerializeField] private Arrow _arrow;
 
     private PlayerInput _playerInput;
+    private LineRenderer _lineRenderer;
     private Animator _animator;
+
     private string _ChargeAnimation = "Charge";
-    private float _chargePower;
     private Weapon _currentWeapon;
     private GameObject _instantiatedWeapon;
     private int _trajectoryQuality = 10;
     private IEnumerator _charge;
-    private LineRenderer _lineRenderer;
+    private float _chargePower;
 
 
     private void Awake()
@@ -36,6 +37,24 @@ public class Attacker : MonoBehaviour
     private void OnDestroy()
     {
         _playerInput.Disable();
+    }
+
+    public void DisableInput()
+    {
+        _playerInput.Disable();
+    }
+
+    public void EnableInput()
+    {
+        _playerInput.Enable();
+    }
+
+    public void ChangeWeapon(Weapon weapon = null)
+    {
+        if (weapon == null)
+            _currentWeapon = _defaultWeapon;
+        else
+            _currentWeapon = weapon;
     }
 
     private void StartChargeAttack()

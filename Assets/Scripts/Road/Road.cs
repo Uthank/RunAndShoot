@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Road : MonoBehaviour
 {
-    [SerializeField] private RoadPreset _roadPreset;
     [SerializeField] private RoadSegment _start;
     [SerializeField] private RoadSegment _finish;
+    [SerializeField] private SegmentGroup[] _segmentGroups;
 
     private Vector3 _placingPosition = Vector3.zero;
 
@@ -14,11 +14,9 @@ public class Road : MonoBehaviour
     {
         InstantiateSegment(_start);
 
-        List<RoadSegment> segments = _roadPreset.GetSegments();
-
-        foreach (RoadSegment segment in segments)
+        foreach (var segment in _segmentGroups)
         {
-            InstantiateSegment(segment);
+            _placingPosition = segment.InstantiateGroup(_placingPosition);
         }
 
         InstantiateSegment(_finish);

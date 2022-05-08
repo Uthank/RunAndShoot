@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Player _target;
+    [SerializeField] private Color _aliveColor;
     [SerializeField] private Color _deathColor;
     [SerializeField] private Renderer _renderer;
 
@@ -11,6 +12,7 @@ public class Enemy : MonoBehaviour
     private EnemyStateMachine _enemyStateMachine;
     private List<State> _states = new List<State>();
     private List<Transition> _transitions = new List<Transition>();
+    private Ragdoll _ragdoll;
 
     public Player Target => _target;
 
@@ -20,6 +22,8 @@ public class Enemy : MonoBehaviour
         _enemyStateMachine = GetComponent<EnemyStateMachine>();
         _states.AddRange(GetComponents<State>());
         _transitions.AddRange(GetComponents<Transition>());
+        _ragdoll = GetComponent<Ragdoll>();
+        _renderer.material.color = _aliveColor;
     }
 
     public void SetTarget(Player target)
@@ -29,7 +33,7 @@ public class Enemy : MonoBehaviour
 
     public void Kill()
     {
-        _animator.enabled = false;
+        _ragdoll.TurnOnRagdoll();
         _enemyStateMachine.enabled = false;
 
         foreach (var state in _states)

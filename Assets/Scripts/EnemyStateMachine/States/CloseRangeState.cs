@@ -13,7 +13,7 @@ public class CloseRangeState : State
 
     private void Update()
     {
-        if (Target != null)
+        if (Target.IsAlive == true)
         {
             Vector3 direction = (Target.transform.position - transform.position).normalized;
             _rigidbody.velocity = direction * _speed;

@@ -28,6 +28,11 @@ public class Mover : MonoBehaviour
         transform.Translate(Vector3.left * Time.deltaTime * _speed);
     }
 
+    public void DisableInput()
+    {
+        _playerInput.Disable();
+    }
+
     private void HorizontalPositioning()
     {
         if (_isMove == true)

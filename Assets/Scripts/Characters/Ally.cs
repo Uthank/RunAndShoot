@@ -1,49 +1,36 @@
 using UnityEngine;
 
-public class Ally : MonoBehaviour, IKillable
+public class Ally : Archer, IKillable
 {
-    private float _clampHorizontalPosition = 1f;
-    private Rigidbody _rigidbody;
-    private Vector3 _velocity;
-    private float _force = 20f;
-    private Player _player;
-    private Crowd _crowd;
+    [SerializeField] private Color _aliveColor;
+    [SerializeField] private Renderer _renderer;
+    [SerializeField] private Color _deathColor;
+
+    private Attacker _attacker;
+    private Ragdoll _ragdoll;
+
+    public Player Player { get; private set; }
+    public Crowd Crowd { get; private set; }
 
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        _ragdoll = GetComponent<Ragdoll>();
+        _attacker = GetComponent<Attacker>();
+        _renderer.material.color = _aliveColor;
     }
 
-    private void Update()
+    public void Initialize(Player player)
     {
-        _velocity = Vector3.zero;
-
-        if (transform.position.z > _player.transform.position.z + _clampHorizontalPosition)
-        {
-            _velocity += Vector3.back;
-        }
-
-        if (transform.position.z < _player.transform.position.z - _clampHorizontalPosition)
-        {
-            _velocity += Vector3.forward;
-        }
-
-        if (transform.TransformPoint(transform.position).x > _player.transform.position.x)
-        {
-            _velocity += Vector3.left;
-        }
-
-        _velocity *= _force;
-        _rigidbody.velocity += _velocity;
-    }
-    public void SetPlayer(Player player)
-    {
-        _player = player;
-        _crowd = player.GetComponent<Crowd>();
+        Player = player;
+        Crowd = player.GetComponent<Crowd>();
     }
 
     public void Kill()
     {
-        _crowd.Damage(this);
+        transform.parent = null;
+        _attacker.DisableInput();
+        Crowd.RemoveAlly(this);
+        _ragdoll.TurnOnRagdoll();
+        _renderer.material.color = _deathColor;
     }
 }

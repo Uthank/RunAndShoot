@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!319 &31900000
+AvatarMask:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hands
+  m_Mask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+  m_Elements:
+  - m_Path: 
+    m_Weight: 1
+  - m_Path: Character
+    m_Weight: 0
+  - m_Path: CharacterArmature
+    m_Weight: 0
+  - m_Path: CharacterArmature/Leg.IK.L
+    m_Weight: 0
+  - m_Path: CharacterArmature/Leg.IK.L/Leg.002.L
+    m_Weight: 0
+  - m_Path: CharacterArmature/Leg.IK.L/Leg.002.L/Leg.002.L_end
+    m_Weight: 0
+  - m_Path: CharacterArmature/Leg.IK.L/Leg.Pole.L
+    m_Weight: 0
+  - m_Path: CharacterArmature/Leg.IK.L/Leg.Pole.L/Leg.Pole.L_end
+    m_Weight: 0
+  - m_Path: CharacterArmature/Leg.IK.R
+    m_Weight: 0
+  - m_Path: CharacterArmature/Leg.IK.R/Leg.002.R
+    m_Weight: 0
+  - m_Path: CharacterArmature/Leg.IK.R/Leg.002.R/Leg.002.R_end
+    m_Weight: 0
+  - m_Path: CharacterArmature/Leg.IK.R/Leg.Pole.R
+    m_Weight: 0
+  - m_Path: CharacterArmature/Leg.IK.R/Leg.Pole.R/Leg.Pole.R_end
+    m_Weight: 0
+  - m_Path: CharacterArmature/RootBone
+    m_Weight: 0
+  - m_Path: CharacterArmature/RootBone/Body.001
+    m_Weight: 0
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002
+    m_Weight: 0
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003
+    m_Weight: 0
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.001.L
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.001.L/Hand.001.L_end
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.001.R
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.001.R/Hand.001.R_end
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.IK.L
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.IK.L/Hand.002.L
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.IK.L/Hand.002.L/Hand.Holder.L
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.IK.L/Hand.002.L/Hand.Holder.L/Hand.Holder.L_end
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.IK.L/Hand.Pole.L
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.IK.L/Hand.Pole.L/Hand.Pole.L_end
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.IK.R
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.IK.R/Hand.002.R
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.IK.R/Hand.002.R/Hand.Holder.R
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.IK.R/Hand.002.R/Hand.Holder.R/Hand.Holder.R_end
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.IK.R/Hand.Pole.R
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Hand.IK.R/Hand.Pole.R/Hand.Pole.R_end
+    m_Weight: 1
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Neck.001
+    m_Weight: 0
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Neck.001/Neck.001_end
+    m_Weight: 0
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Neck.002
+    m_Weight: 0
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Neck.002/Head.001
+    m_Weight: 0
+  - m_Path: CharacterArmature/RootBone/Body.001/Body.002/Body.003/Neck.002/Head.001/Head.001_end
+    m_Weight: 0
+  - m_Path: CharacterArmature/RootBone/Body.001/Leg.001.L
+    m_Weight: 0
+  - m_Path: CharacterArmature/RootBone/Body.001/Leg.001.L/Leg.001.L_end
+    m_Weight: 0
+  - m_Path: CharacterArmature/RootBone/Body.001/Leg.001.R
+    m_Weight: 0
+  - m_Path: CharacterArmature/RootBone/Body.001/Leg.001.R/Leg.001.R_end
+    m_Weight: 0

@@ -2,7 +2,7 @@ public class PlayerKilledTransition : Transition
 {
     private void Update()
     {
-        if (Target == null)
+        if (Target.IsAlive == false)
         {
             NeedTransit = true;
         }

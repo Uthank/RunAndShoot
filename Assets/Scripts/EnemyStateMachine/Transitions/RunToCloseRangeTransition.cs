@@ -6,7 +6,7 @@ public class RunToCloseRangeTransition : Transition
 
     private void Update()
     {
-        if (Target == null || Vector3.Distance(transform.position, Target.transform.position) < _detectionDistance)
+        if (Target.IsAlive == false || Vector3.Distance(transform.position, Target.transform.position) < _detectionDistance)
         {
             NeedTransit = true;
         }
