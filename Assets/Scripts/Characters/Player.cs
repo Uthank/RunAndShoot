@@ -1,44 +1,33 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Player : Archer, IKillable
+public class Player : Archer
 {
-    [SerializeField] private Color _aliveColor;
-    [SerializeField] private Renderer _renderer;
-    [SerializeField] private Color _deathColor;
-
-    private Crowd _crowd;
-    private Ragdoll _ragdoll;
-    private Attacker _attacker;
     private Mover _mover;
 
     public UnityAction Killed;
 
     public bool IsAlive { get; private set; } = true;
 
-    private void Awake()
+    protected override void Awake()
     {
-        _crowd = GetComponent<Crowd>();
-        _renderer.material.color = _aliveColor;
-        _ragdoll = GetComponent<Ragdoll>();
-        _attacker = GetComponent<Attacker>();
+        Crowd = GetComponent<Crowd>();
         _mover = GetComponent<Mover>();
+        base.Awake();
     }
 
     public void Damage()
     {
-        if (_crowd.Damage() == false)
+        if (Crowd.Damage() == false)
             Kill();
     }
 
-    public void Kill()
+    public override void Kill(Transform forceSource = null, float force = 0)
     {
         Killed?.Invoke();
         IsAlive = false;
         _mover.DisableInput();
         _mover.enabled = false;
-        _attacker.DisableInput();
-        _ragdoll.TurnOnRagdoll();
-        _renderer.material.color = _deathColor;
+        base.Kill(forceSource, force);
     }
 }

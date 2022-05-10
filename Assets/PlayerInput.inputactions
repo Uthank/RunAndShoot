@@ -27,6 +27,33 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "FinishZone",
+            "id": "28724479-fa23-4004-ac6a-851d9d04a4d0",
+            "actions": [
+                {
+                    "name": "Click",
+                    "type": "Button",
+                    "id": "662bfb43-bcda-493b-b1b4-c6469e74cf24",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "301cfa7a-5de5-4fae-ae26-4d773a11a32c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

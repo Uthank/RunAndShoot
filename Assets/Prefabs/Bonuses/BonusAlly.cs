@@ -15,9 +15,9 @@ public class BonusAlly : Bonus
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
-        _ally = GetComponent<Ally>();
-        _attacker = GetComponent<Attacker>();
+        _ally = GetComponentInChildren<Ally>();
+        _animator = _ally.GetComponent<Animator>();
+        _attacker = _ally.GetComponent<Attacker>();
     }
 
     private void Start()
@@ -32,16 +32,16 @@ public class BonusAlly : Bonus
             if (collision.transform.TryGetComponent<Ally>(out Ally ally) == true)
             {
                 _ally.Initialize(ally.Player);
-                transform.parent = ally.Player.transform;
+                _ally.transform.parent = ally.Player.transform;
                 ally.Crowd.AddAllyToList(_ally);
                 Activate();
             }
 
-            if (collision.transform.TryGetComponent<Crowd>(out Crowd crowd) == true)
+            if (collision.transform.TryGetComponent<Player>(out Player player) == true)
             {
-                _ally.Initialize(crowd.GetComponent<Player>());
-                transform.parent = crowd.transform;
-                crowd.AddAllyToList(_ally);
+                _ally.Initialize(player);
+                _ally.transform.parent = player.transform;
+                player.Crowd.AddAllyToList(_ally);
                 Activate();
             }
         }
@@ -63,6 +63,6 @@ public class BonusAlly : Bonus
         _ally.enabled = true;
         _attacker.EnableInput();
         _renderer.material.color = _activatedColor;
-        this.enabled = false;
+        Destroy(gameObject);
     }
 }

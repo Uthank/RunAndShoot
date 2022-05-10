@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
         _target = target;
     }
 
-    public void Kill()
+    public virtual void Kill()
     {
         _ragdoll.TurnOnRagdoll();
         _enemyStateMachine.enabled = false;

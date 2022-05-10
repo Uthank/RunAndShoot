@@ -8,16 +8,16 @@ public class Crowd : MonoBehaviour
     [SerializeField] private Ally _ally;
     [SerializeField] private TMP_Text _textField;
 
-    private Player _player;
-
     private List<Ally> _allies = new List<Ally>();
     private Vector3 _allySpawnOffset = new Vector3(-1.5f, 0, 0);
     private Vector3 _allySpawnOffsetExtends = new Vector3(1, 0, 1);
 
+    public Player Player { get; private set; }
+
     private void Awake()
     {
-        _player = GetComponent<Player>();
-        CreateAllies(count: 20);
+        Player = GetComponent<Player>();
+        CreateAllies();
     }
 
     public void CreateAllies(UpgradeTypes upgradeType = UpgradeTypes.Additive, int count = 1)
@@ -32,7 +32,7 @@ public class Crowd : MonoBehaviour
             Vector3 offset = _allySpawnOffset + new Vector3(offsetZ, 0, offsetX);
 
             Ally ally = Instantiate(_ally, transform.position + offset, Quaternion.identity, transform);
-            ally.Initialize(_player);
+            ally.Initialize(Player);
             _allies.Add(ally);
         }
         RedrawCount();

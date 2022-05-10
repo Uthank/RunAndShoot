@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: BonusList
   m_EditorClassIdentifier: 
   _bonuses:
-  - {fileID: -2515869256301741305, guid: 2e71607f9ddd37445b87711be8526cd0, type: 3}
+  - {fileID: -471505140306415284, guid: a44c13edf5431314d8ad7f1ed54e6ed4, type: 3}
   - {fileID: -7021266322245185553, guid: e0fa87af4d2eef5418f561d698b232f9, type: 3}

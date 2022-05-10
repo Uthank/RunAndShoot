@@ -8,11 +8,11 @@ public class Arrow : MonoBehaviour
     private AnimationCurve _trajectory;
     private float _range;
     private ArrowType _type;
-    private float _startPointX;
-    private float _endPointX;
     private Rigidbody _rigidbody;
-    private int _unitPerSecond = 10;
+    private int _unitPerSecond = 25;
     private float _verticalOffset = 2;
+    Vector3 _startPoint;
+    Vector3 _endPoint;
 
     private void Awake()
     {
@@ -35,17 +35,20 @@ public class Arrow : MonoBehaviour
         _type = type;
 
         Instantiate(_type.Model, transform);
-        _startPointX = transform.position.x;
-        _endPointX = _startPointX + _range;
+        _startPoint = transform.position;
+        _endPoint = transform.position + Vector3.right * _range;
         StartCoroutine(Fly());
     }
 
     private IEnumerator Fly()
     {
-        while (transform.position.x < _endPointX)
+        float range = (_endPoint - _startPoint).magnitude;
+
+        while ((transform.position - _startPoint).magnitude < range)
         {
-            Vector3 point = transform.position + new Vector3(_unitPerSecond * Time.deltaTime, 0, 0);
-            point.y = _trajectory.Evaluate((transform.position.x - _startPointX) / _range) * _verticalOffset;
+            Vector3 point = transform.position + Vector3.right * _unitPerSecond * Time.deltaTime;
+            point.y = _trajectory.Evaluate((transform.position - _startPoint).magnitude / range) * _verticalOffset;
+            point = transform.position + transform.rotation * (point - transform.position);
             _rigidbody.MovePosition(point);
             yield return null;
         }

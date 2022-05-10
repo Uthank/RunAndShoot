@@ -15,12 +15,14 @@ public class Attacker : MonoBehaviour
     private LineRenderer _lineRenderer;
     private Animator _animator;
 
-    private string _ChargeAnimation = "Charge";
+    private string _chargeAnimation = "Charge";
+    private string _shootAnimation = "Shoot";
     private Weapon _currentWeapon;
     private GameObject _instantiatedWeapon;
     private int _trajectoryQuality = 10;
     private IEnumerator _charge;
     private float _chargePower;
+    private float _maxChargePower = 30;
 
 
     private void Awake()
@@ -32,11 +34,6 @@ public class Attacker : MonoBehaviour
         _animator = GetComponent<Animator>();
         _currentWeapon = _defaultWeapon;
         _lineRenderer = GetComponent<LineRenderer>();
-    }
-
-    private void OnDestroy()
-    {
-        _playerInput.Disable();
     }
 
     public void DisableInput()
@@ -57,11 +54,22 @@ public class Attacker : MonoBehaviour
             _currentWeapon = weapon;
     }
 
+    public void ShootTarget(Transform target, Vector3 headOffset)
+    {
+        if (_instantiatedWeapon == null)
+            _instantiatedWeapon = Instantiate(_currentWeapon.Model, _weaponHolder.transform);
+
+        transform.LookAt(transform.position + Quaternion.Euler(0, -90, 0) * (target.position - transform.position));
+        _animator.SetTrigger(_shootAnimation);
+        Arrow arrow = Instantiate(_arrow, transform.position + transform.rotation * Vector3.right, Quaternion.FromToRotation(Vector3.right, target.position - transform.position).normalized);
+        arrow.Initialize(_trajectory, _maxChargePower, _currentWeapon.ArrowType);
+    }
+
     private void StartChargeAttack()
     {
         _instantiatedWeapon = Instantiate(_currentWeapon.Model, _weaponHolder.transform);
 
-        _animator.SetBool(_ChargeAnimation, true);
+        _animator.SetBool(_chargeAnimation, true);
         _chargePower = 3;
 
         _charge = Charge();
@@ -73,7 +81,7 @@ public class Attacker : MonoBehaviour
         StopCoroutine(_charge);
         _charge = null;
         _lineRenderer.positionCount = 0;
-        _animator.SetBool(_ChargeAnimation, false);
+        _animator.SetBool(_chargeAnimation, false);
         Arrow arrow = Instantiate(_arrow, transform.position + Vector3.right, Quaternion.identity);
         arrow.Initialize(_trajectory, _chargePower, _currentWeapon.ArrowType);
         Destroy(_instantiatedWeapon);
@@ -97,7 +105,7 @@ public class Attacker : MonoBehaviour
 
     private IEnumerator Charge()
     {
-        while (_chargePower < 30)
+        while (_chargePower < _maxChargePower)
         {
             _chargePower += Time.deltaTime * _chargeSpeed;
             DrawLine();

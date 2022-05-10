@@ -40,6 +40,33 @@ public class @PlayerInput : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""FinishZone"",
+            ""id"": ""28724479-fa23-4004-ac6a-851d9d04a4d0"",
+            ""actions"": [
+                {
+                    ""name"": ""Click"",
+                    ""type"": ""Button"",
+                    ""id"": ""662bfb43-bcda-493b-b1b4-c6469e74cf24"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""301cfa7a-5de5-4fae-ae26-4d773a11a32c"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse"",
+                    ""action"": ""Click"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": [
@@ -59,6 +86,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Touch = m_Player.FindAction("Touch", throwIfNotFound: true);
+        // FinishZone
+        m_FinishZone = asset.FindActionMap("FinishZone", throwIfNotFound: true);
+        m_FinishZone_Click = m_FinishZone.FindAction("Click", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -137,6 +167,39 @@ public class @PlayerInput : IInputActionCollection, IDisposable
         }
     }
     public PlayerActions @Player => new PlayerActions(this);
+
+    // FinishZone
+    private readonly InputActionMap m_FinishZone;
+    private IFinishZoneActions m_FinishZoneActionsCallbackInterface;
+    private readonly InputAction m_FinishZone_Click;
+    public struct FinishZoneActions
+    {
+        private @PlayerInput m_Wrapper;
+        public FinishZoneActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Click => m_Wrapper.m_FinishZone_Click;
+        public InputActionMap Get() { return m_Wrapper.m_FinishZone; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(FinishZoneActions set) { return set.Get(); }
+        public void SetCallbacks(IFinishZoneActions instance)
+        {
+            if (m_Wrapper.m_FinishZoneActionsCallbackInterface != null)
+            {
+                @Click.started -= m_Wrapper.m_FinishZoneActionsCallbackInterface.OnClick;
+                @Click.performed -= m_Wrapper.m_FinishZoneActionsCallbackInterface.OnClick;
+                @Click.canceled -= m_Wrapper.m_FinishZoneActionsCallbackInterface.OnClick;
+            }
+            m_Wrapper.m_FinishZoneActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Click.started += instance.OnClick;
+                @Click.performed += instance.OnClick;
+                @Click.canceled += instance.OnClick;
+            }
+        }
+    }
+    public FinishZoneActions @FinishZone => new FinishZoneActions(this);
     private int m_MouseSchemeIndex = -1;
     public InputControlScheme MouseScheme
     {
@@ -149,5 +212,9 @@ public class @PlayerInput : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnTouch(InputAction.CallbackContext context);
+    }
+    public interface IFinishZoneActions
+    {
+        void OnClick(InputAction.CallbackContext context);
     }
 }

@@ -34,9 +34,9 @@ public class Trap : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<IKillable>(out IKillable iKillable))
+        if (other.TryGetComponent<Archer>(out Archer archer))
         {
-            iKillable.Kill();
+            archer.Kill();
         }
     }
 

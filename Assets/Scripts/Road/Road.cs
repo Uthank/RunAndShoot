@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Road : MonoBehaviour
@@ -7,24 +5,27 @@ public class Road : MonoBehaviour
     [SerializeField] private RoadSegment _start;
     [SerializeField] private RoadSegment _finish;
     [SerializeField] private SegmentGroup[] _segmentGroups;
+    [SerializeField] private EnemySpawner _enemySpawner;
 
     private Vector3 _placingPosition = Vector3.zero;
 
     private void Awake()
     {
-        InstantiateSegment(_start);
+        GameObject start = InstantiateSegment(_start);
 
         foreach (var segment in _segmentGroups)
         {
             _placingPosition = segment.InstantiateGroup(_placingPosition);
         }
 
-        InstantiateSegment(_finish);
+        GameObject finish = InstantiateSegment(_finish);
+        finish.GetComponentInChildren<FinishZone>().SetEnemySpawner(_enemySpawner);
     }
 
-    private void InstantiateSegment(RoadSegment segment)
+    private GameObject InstantiateSegment(RoadSegment segment)
     {
-        Instantiate(segment.Prefab, _placingPosition, Quaternion.identity);
+        GameObject InstantiatedSegment = Instantiate(segment.Prefab, _placingPosition, Quaternion.identity);
         _placingPosition += segment.OffsetToNextPlacingPosition;
+        return InstantiatedSegment;
     }
 }
