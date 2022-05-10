@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class BossFallState : State
 {
     [SerializeField] float _fallSpeed;

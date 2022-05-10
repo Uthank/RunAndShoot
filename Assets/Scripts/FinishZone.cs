@@ -28,14 +28,11 @@ public class FinishZone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Player>(out Player player) == true)
+        if (other.TryGetComponent<Crowd>(out Crowd crowd) == true)
         {
-            var mover = player.GetComponent<Mover>();
-            mover.DisableInput();
-            mover.enabled = false;
-            player.GetComponent<Attacker>().DisableInput();
-            _archers.Add(player);
-            _archers.AddRange(player.GetComponent<Crowd>().GetArchers());
+            crowd.GetComponent<Mover>().DisableInput();
+            crowd.GetComponent<Mover>().enabled = false;
+            _archers.AddRange(crowd.GetArchers());
             MoveCrowdOnPositions();
             BossSpawn();
         }
@@ -66,7 +63,7 @@ public class FinishZone : MonoBehaviour
     {
         foreach (Archer archer in _archers)
         {
-            archer.Kill(forceSource, force);
+            archer.Kill();
         }
     }
 

@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Boss))]
+[RequireComponent(typeof(Animator))]
 public class BossPunchState : State
 {
     private Animator _animator;

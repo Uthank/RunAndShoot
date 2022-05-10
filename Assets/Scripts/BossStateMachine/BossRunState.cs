@@ -1,8 +1,11 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody))]
 public class BossRunState : State
 {
     [SerializeField] private float _runSpeed;
+
     private Rigidbody _rigidbody;
     private Animator _animator;
 

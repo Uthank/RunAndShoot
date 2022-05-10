@@ -46,8 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 6486786054853804292}
-  _deactivatedColor: {r: 0, g: 0, b: 0, a: 0}
-  _ally: {fileID: 2309266968719295394}
+  _deactivatedColor: {r: 0.6603774, g: 0.6476579, b: 0.507743, a: 1}
 --- !u!136 &779761497692050007
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -244,17 +243,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5275522457802746795, guid: 2e71607f9ddd37445b87711be8526cd0, type: 3}
   m_PrefabInstance: {fileID: 7510507969503652910}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2309266968719295394 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5203492817846923148, guid: 2e71607f9ddd37445b87711be8526cd0, type: 3}
-  m_PrefabInstance: {fileID: 7510507969503652910}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13f4f84f56a4f7f4eb503e903fc442f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!137 &6486786054853804292 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3620646404550405418, guid: 2e71607f9ddd37445b87711be8526cd0, type: 3}

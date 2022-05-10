@@ -5,20 +5,27 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private Enemy _enemy;
-    [SerializeField] private Player _player;
+    [SerializeField] private Crowd _crowd;
+    [SerializeField] private float _spawnFrequency = .5f;
 
     private List<Enemy> _enemies = new List<Enemy>();
     private float _maxOffset = 2.5f;
     private IEnumerator _spawn;
+    private WaitForSeconds _frequency;
+
+    private void Awake()
+    {
+        _frequency = new WaitForSeconds(_spawnFrequency);
+    }
 
     private void OnEnable()
     {
-        _player.Killed += TurnOff;
+        _crowd.King.Killed += TurnOff;
     }
 
     private void OnDisable()
     {
-        _player.Killed -= TurnOff;
+        _crowd.King.Killed -= TurnOff;
     }
 
     private void Update()
@@ -46,8 +53,8 @@ public class EnemySpawner : MonoBehaviour
 
         Enemy enemy = Instantiate(_enemy, transform.position + new Vector3(offsetX, 0, offsetZ), Quaternion.Euler(0, 180, 0));
         _enemies.Add(enemy);
-        enemy.SetTarget(_player);
-        yield return new WaitForSeconds(0.5f);
+        enemy.SetTarget(_crowd.King);
+        yield return _frequency;
         _spawn = null;
     }
 

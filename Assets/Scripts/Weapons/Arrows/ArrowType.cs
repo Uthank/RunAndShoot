@@ -4,8 +4,8 @@ using UnityEngine;
 public class ArrowType : ScriptableObject
 {
     [SerializeField] private GameObject _model;
-    [SerializeField] private HitEffect _hitEffect;
+    [SerializeField] private EffectTypes _hitEffect;
 
     public GameObject Model => _model;
-    public HitEffect HitEffect => _hitEffect;
+    public EffectTypes HitEffect => _hitEffect;
 }

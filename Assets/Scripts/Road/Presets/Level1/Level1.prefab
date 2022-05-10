@@ -49,3 +49,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 08f918f78ae38a944bd970c7acce4f78, type: 2}
   - {fileID: 11400000, guid: 7f1cc4b71c6df184781c553ce9451c46, type: 2}
   - {fileID: 11400000, guid: c5b8c182eb28a9e4e925153c057ee702, type: 2}
+  _enemySpawner: {fileID: 0}

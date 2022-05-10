@@ -1,12 +1,14 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Attacker))]
 public class BonusAlly : Bonus
 {
     [SerializeField] private Renderer _renderer;
     [SerializeField] private Color _deactivatedColor;
 
     private Animator _animator;
-    private Ally _ally;
+    private Paw _ally;
     private Attacker _attacker;
 
     private Color _activatedColor;
@@ -15,7 +17,7 @@ public class BonusAlly : Bonus
 
     private void Awake()
     {
-        _ally = GetComponentInChildren<Ally>();
+        _ally = GetComponentInChildren<Paw>();
         _animator = _ally.GetComponent<Animator>();
         _attacker = _ally.GetComponent<Attacker>();
     }
@@ -29,19 +31,12 @@ public class BonusAlly : Bonus
     {
         if (_isActivated == false)
         {
-            if (collision.transform.TryGetComponent<Ally>(out Ally ally) == true)
+            if (collision.transform.TryGetComponent<Archer>(out Archer archer) == true)
             {
-                _ally.Initialize(ally.Player);
-                _ally.transform.parent = ally.Player.transform;
-                ally.Crowd.AddAllyToList(_ally);
-                Activate();
-            }
-
-            if (collision.transform.TryGetComponent<Player>(out Player player) == true)
-            {
-                _ally.Initialize(player);
-                _ally.transform.parent = player.transform;
-                player.Crowd.AddAllyToList(_ally);
+                Crowd crowd = archer.transform.parent.GetComponent<Crowd>();
+                _ally.Initialize(crowd);
+                _ally.transform.parent = archer.transform.parent;
+                crowd.AddAllyToList(_ally);
                 Activate();
             }
         }

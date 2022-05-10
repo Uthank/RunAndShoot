@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Boss))]
 public class BossToPunchTransition : Transition
 {
     private Vector3 _runTarget;

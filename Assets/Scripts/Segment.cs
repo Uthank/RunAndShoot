@@ -5,6 +5,7 @@ using System.Linq;
 public class Segment : MonoBehaviour
 {
     [SerializeField][Range(0f, 1f)] float _bonusSpawnProbability = .5f;
+
     private List<BonusSpawner> _spawners = new List<BonusSpawner>();
 
     private void Awake()

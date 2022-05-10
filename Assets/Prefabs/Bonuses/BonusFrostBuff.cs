@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Renderer))]
 public class BonusFrostBuff : Bonus
 {
     [SerializeField] Weapon _weapon;
 
-    private List<Attacker> _attackers = new List<Attacker>();
     private Renderer _renderer;
+    private List<Attacker> _attackers = new List<Attacker>();
     private WaitForSeconds _baffDuration = new WaitForSeconds(3);
 
     private void Awake()
@@ -17,21 +18,14 @@ public class BonusFrostBuff : Bonus
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.TryGetComponent<Ally>(out Ally ally) == true)
-        {
-            StartCoroutine(Buff(ally.Player));
-        }
-
-        if (other.transform.TryGetComponent<Player>(out Player player) == true)
-        {
-            StartCoroutine(Buff(player));
-        }
+        if (other.transform.TryGetComponent<Archer>(out Archer archer) == true)
+            StartCoroutine(Buff(archer));
     }
 
-    private IEnumerator Buff(Player player)
+    private IEnumerator Buff(Archer archer)
     {
         _renderer.enabled = false;
-        _attackers.AddRange(player.GetComponentsInChildren<Attacker>());
+        _attackers.AddRange(archer.Crowd.GetComponentsInChildren<Attacker>());
 
         foreach (var attacker in _attackers)
             attacker.ChangeWeapon(_weapon);

@@ -1,6 +1,8 @@
-using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Ragdoll))]
+[RequireComponent(typeof(Attacker))]
+[RequireComponent(typeof(Animator))]
 public class Archer : MonoBehaviour
 {
     [SerializeField] protected Color _aliveColor;
@@ -16,6 +18,7 @@ public class Archer : MonoBehaviour
 
     protected virtual void Awake()
     {
+        Crowd = transform.parent.GetComponent<Crowd>();
         _ragdoll = GetComponent<Ragdoll>();
         Attacker = GetComponent<Attacker>();
         Animator = GetComponent<Animator>();
@@ -27,16 +30,10 @@ public class Archer : MonoBehaviour
         Rigidbody = GetComponent<Rigidbody>();
     }
 
-    public virtual void Kill(Transform forceSource = null, float force = 0)
+    public virtual void Kill()
     {
         Attacker.DisableInput();
         _ragdoll.TurnOnRagdoll();
         _renderer.material.color = _deathColor;
-
-        if (forceSource != null)
-        {
-            Vector3 forceDirection = (transform.position - forceSource.position).normalized + Vector3.up;
-            Rigidbody.AddForce(forceDirection * force);
-        }
     }
 }

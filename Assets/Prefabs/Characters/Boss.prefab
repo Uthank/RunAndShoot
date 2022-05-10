@@ -863,6 +863,7 @@ GameObject:
   - component: {fileID: 7014927272392216604}
   - component: {fileID: 834904652495982639}
   - component: {fileID: 6169829279293132042}
+  - component: {fileID: 6893209297383382745}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -951,8 +952,10 @@ MonoBehaviour:
   _aliveColor: {r: 0.7264151, g: 0.03769135, b: 0.03769135, a: 0}
   _deathColor: {r: 0, g: 0, b: 0, a: 0}
   _renderer: {fileID: 2876823341451925866}
+  _status: {fileID: 0}
   _body: {fileID: 7327862540237348233}
   _punchForce: 30
+  _health: 50
 --- !u!114 &2479348372821339592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1071,6 +1074,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Transitions: []
+--- !u!114 &6893209297383382745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5361436648947272981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffbd44cc754f73c458e6f5d96614045b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderer: {fileID: 2876823341451925866}
 --- !u!1 &5424063008567287500
 GameObject:
   m_ObjectHideFlags: 0

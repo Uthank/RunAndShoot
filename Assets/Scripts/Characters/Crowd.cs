@@ -2,28 +2,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(Mover))]
 public class Crowd : MonoBehaviour
 {
-    [SerializeField] private Ally _ally;
+    [SerializeField] King _king;
+    [SerializeField] private Paw _ally;
     [SerializeField] private TMP_Text _textField;
 
-    private List<Ally> _allies = new List<Ally>();
+    private Mover _mover;
+
+    private List<Paw> _paws = new List<Paw>();
     private Vector3 _allySpawnOffset = new Vector3(-1.5f, 0, 0);
     private Vector3 _allySpawnOffsetExtends = new Vector3(1, 0, 1);
 
-    public Player Player { get; private set; }
+    public King King => _king;
 
     private void Awake()
     {
-        Player = GetComponent<Player>();
+        _mover = GetComponent<Mover>();
+        _king = Instantiate(_king, transform);
         CreateAllies();
     }
 
     public void CreateAllies(UpgradeTypes upgradeType = UpgradeTypes.Additive, int count = 1)
     {
         if (upgradeType == UpgradeTypes.Multiplicate)
-            count = (count - 1) * _allies.Count;
+            count = (count - 1) * _paws.Count;
 
         for (int i = 0; i < count; i++)
         {
@@ -31,57 +35,64 @@ public class Crowd : MonoBehaviour
             float offsetX = Random.Range(-_allySpawnOffsetExtends.x, _allySpawnOffsetExtends.x);
             Vector3 offset = _allySpawnOffset + new Vector3(offsetZ, 0, offsetX);
 
-            Ally ally = Instantiate(_ally, transform.position + offset, Quaternion.identity, transform);
-            ally.Initialize(Player);
-            _allies.Add(ally);
+            Paw paw = Instantiate(_ally, transform.position + offset, Quaternion.identity, transform);
+            _paws.Add(paw);
         }
         RedrawCount();
     }
 
-    public void AddAllyToList(Ally ally)
+    public void AddAllyToList(Paw paw)
     {
-        _allies.Add(ally);
+        _paws.Add(paw);
         RedrawCount();
     }
 
-    public bool Damage()
+    public void Damage()
     {
-        if (_allies.Count == 0)
-            return false;
+        if (King.IsAlive == true)
+        {
+            if (_paws.Count == 0)
+            {
+                King.Kill();
+                _mover.DisableInput();
+                _mover.enabled = false;
+            }
 
-        Ally ally = _allies[0];
-        _allies.RemoveAt(0);
-        ally.Kill();
+            Paw paw = _paws[0];
+            _paws.RemoveAt(0);
+            paw.Kill();
 
-        RedrawCount();
-        return true;
+            RedrawCount();
+        }
     }
 
-    public void RemoveAlly(Ally ally)
+    public void RemovePaw(Paw paw)
     {
-        _allies.Remove(ally);
+        _paws.Remove(paw);
         RedrawCount();
     }
 
     public void RedrawCount()
     {
-        _textField.text = _allies.Count.ToString();
+        _textField.text = _paws.Count.ToString();
     }
 
     public List<Archer> GetArchers()
     {
         List<Archer> list = new List<Archer>();
 
-        foreach (var ally in _allies)
+        list.Add(King);
+
+        foreach (var paw in _paws)
         {
-            ally.transform.parent = null;
-            ally.GetComponent<Attacker>().DisableInput();
-            ally.GetComponent<Formation>().enabled = false;
-            ally.GetComponent<Collider>().enabled = false;
-            list.Add(ally);
+            paw.transform.parent = null;
+            paw.GetComponent<Attacker>().DisableInput();
+            paw.GetComponent<Formation>().enabled = false;
+            paw.GetComponent<Collider>().enabled = false;
+            list.Add(paw);
         }
 
-        _allies.Clear();
+        _paws.Clear();
         _textField.enabled = false;
         return list;
     }

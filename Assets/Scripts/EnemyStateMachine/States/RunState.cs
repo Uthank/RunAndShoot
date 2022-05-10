@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class RunState : State
 {
     [SerializeField] private float _speed;

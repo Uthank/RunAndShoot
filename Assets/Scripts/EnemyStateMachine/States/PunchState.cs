@@ -1,6 +1,6 @@
-using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class PunchState : State
 {
     private Animator _animator;

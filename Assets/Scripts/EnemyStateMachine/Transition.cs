@@ -4,19 +4,19 @@ public abstract class Transition : MonoBehaviour
 {
     [SerializeField] private State _targetState;
 
-    protected Player Target { get; private set; }
+    protected King Target { get; private set; }
 
     public State TargetState => _targetState;
 
     public bool NeedTransit { get; set; }
 
-    public void Init(Player target)
-    {
-        Target = target;
-    }
-
     private void OnEnable()
     {
         NeedTransit = false;
+    }
+
+    public void Init(King target)
+    {
+        Target = target;
     }
 }

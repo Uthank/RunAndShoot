@@ -3,6 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(PlayerInput))]
+[RequireComponent(typeof(LineRenderer))]
 public class Attacker : MonoBehaviour
 {
     [SerializeField] private AnimationCurve _trajectory;

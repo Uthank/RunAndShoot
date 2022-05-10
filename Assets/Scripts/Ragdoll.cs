@@ -1,6 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Collider))]
 public class Ragdoll : MonoBehaviour
 {
     [SerializeField] private Collider[] _ragdollColliders;

@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Boss))]
 public class BossToRunTransition : Transition
 {
     private Boss _boss;

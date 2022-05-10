@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Renderer))]
 public class water : MonoBehaviour
 {
     [SerializeField] private float _scrollSpeed = 0.5f;

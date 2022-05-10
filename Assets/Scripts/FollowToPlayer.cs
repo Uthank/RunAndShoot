@@ -1,30 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FollowToPlayer : MonoBehaviour
 {
-    [SerializeField] private Player _player;
+    [SerializeField] private Crowd _crowd;
     
     private Vector3 _offset;
+    private King _king;
 
     private void Awake()
     {
-        _offset = transform.position - _player.transform.position;
+        _king = _crowd.GetComponentInChildren<King>();
+        _offset = transform.position - _king.transform.position;
     }
 
     private void Update()
     {
-        transform.position = new Vector3(_player.transform.position.x, _player.transform.position.y, 0) + _offset;
+        transform.position = new Vector3(_king.transform.position.x, _king.transform.position.y, 0) + _offset;
     }
     private void OnEnable()
     {
-        _player.Killed += OnTargetKilled;
+        _king.Killed += OnTargetKilled;
     }
 
     private void OnDisable()
     {
-        _player.Killed -= OnTargetKilled;
+        _king.Killed -= OnTargetKilled;
     }
     private void OnTargetKilled()
     {

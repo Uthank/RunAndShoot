@@ -2117,7 +2117,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8203609663879259496}
   - component: {fileID: 2826359866162020114}
-  - component: {fileID: 8131808886574178639}
   - component: {fileID: 8852315795805328604}
   - component: {fileID: 1300689297868367335}
   - component: {fileID: -1371577771495436759}
@@ -2125,8 +2124,9 @@ GameObject:
   - component: {fileID: -2048544246186057291}
   - component: {fileID: 614857897897277467}
   - component: {fileID: 6799026180462000009}
+  - component: {fileID: 4275647877859175180}
   m_Layer: 0
-  m_Name: Ally
+  m_Name: Paw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2167,22 +2167,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8131808886574178639
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8832336407768629202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13f4f84f56a4f7f4eb503e903fc442f2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speed: 10
-  _aliveColor: {r: 0.71349055, g: 0.764151, b: 0.1477839, a: 0}
-  _renderer: {fileID: 779235469670228969}
-  _deathColor: {r: 0.23584908, g: 0.17021184, b: 0.17021184, a: 0}
 --- !u!136 &8852315795805328604
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2429,6 +2413,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdc6243f6942ed0448ce660357cd3e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4275647877859175180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8832336407768629202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfbd7f4077caabb47bbe9fbcd72d60e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aliveColor: {r: 0.96469927, g: 1, b: 0, a: 0}
+  _renderer: {fileID: 779235469670228969}
+  _deathColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &8959954998101499605
 GameObject:
   m_ObjectHideFlags: 0

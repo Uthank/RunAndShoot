@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23d9764e9c729e748b3049052dbed623, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _enemy: {fileID: 7057493239509461139, guid: 4d12d5bdac67bd24c9888e4a37914343, type: 3}
+  _enemy: {fileID: 3837695140461073321, guid: 4d12d5bdac67bd24c9888e4a37914343, type: 3}
+  _crowd: {fileID: 0}
+  _spawnFrequency: 0.5
 --- !u!114 &2063916457718842192
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,4 +59,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87644574266ba1f49b0fa888c82664f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _crowd: {fileID: 0}

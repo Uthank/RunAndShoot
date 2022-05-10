@@ -10,6 +10,14 @@ public class Upgrader : MonoBehaviour
     private int _value;
     private string _text;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent<Crowd>(out Crowd crowd))
+        {
+            crowd.CreateAllies(_upgradeType, _value);
+        }
+    }
+
     public void Initialize(UpgradeGoodness upgradeGoodness, UpgradeTypes upgradeTypes, int value)
     {
         _upgradeGoodness = upgradeGoodness;
@@ -28,13 +36,5 @@ public class Upgrader : MonoBehaviour
 
         _text = _text + _value;
         _textField.text = _text;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.TryGetComponent<Crowd>(out Crowd crowd))
-        {
-            crowd.CreateAllies(_upgradeType, _value);
-        }
     }
 }

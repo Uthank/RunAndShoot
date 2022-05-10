@@ -1,5 +1,6 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class CloseRangeState : State
 {
     [SerializeField] private float _speed;

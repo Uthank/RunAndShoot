@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class Arrow : MonoBehaviour
 {
     [SerializeField] private float _speed;
@@ -11,8 +12,8 @@ public class Arrow : MonoBehaviour
     private Rigidbody _rigidbody;
     private int _unitPerSecond = 25;
     private float _verticalOffset = 2;
-    Vector3 _startPoint;
-    Vector3 _endPoint;
+    private Vector3 _startPoint;
+    private Vector3 _endPoint;
 
     private void Awake()
     {
@@ -23,8 +24,14 @@ public class Arrow : MonoBehaviour
     {
         if (other.TryGetComponent<Enemy>(out Enemy enemy) == true)
         {
-            enemy.Kill();
-            Destroy(gameObject);
+            transform.parent = enemy.transform;
+            Destroy(gameObject, 5f);
+            this.enabled = false;
+
+            if (_type.HitEffect == EffectTypes.None)
+                enemy.Kill();
+            else
+                enemy.ReceiveHitEffect(_type.HitEffect);
         }
     }
 
