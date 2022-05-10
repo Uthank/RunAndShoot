@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c66d710fc14fe5418712656ed0439ec, type: 3}
-  m_Name: FrostArrow
+  m_Script: {fileID: 11500000, guid: 315ffe2a4859447e87bd0c041086908f, type: 3}
+  m_Name: '[Readme]'
   m_EditorClassIdentifier: 
-  _model: {fileID: 5073054428714714025, guid: 17a5c8b1bf4c7d04782c7845d9e6e0d1, type: 3}
-  _hitEffect: 1

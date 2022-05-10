@@ -18,11 +18,15 @@ public class Archer : MonoBehaviour
 
     protected virtual void Awake()
     {
-        Crowd = transform.parent.GetComponent<Crowd>();
         _ragdoll = GetComponent<Ragdoll>();
         Attacker = GetComponent<Attacker>();
         Animator = GetComponent<Animator>();
         _renderer.material.color = _aliveColor;
+    }
+
+    private void OnEnable()
+    {
+        Crowd = transform.parent.GetComponent<Crowd>();
     }
 
     private void Start()

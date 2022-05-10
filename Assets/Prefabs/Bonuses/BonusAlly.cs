@@ -17,9 +17,9 @@ public class BonusAlly : Bonus
 
     private void Awake()
     {
-        _ally = GetComponentInChildren<Paw>();
-        _animator = _ally.GetComponent<Animator>();
-        _attacker = _ally.GetComponent<Attacker>();
+        _ally = GetComponent<Paw>();
+        _animator = GetComponent<Animator>();
+        _attacker = GetComponent<Attacker>();
     }
 
     private void Start()
@@ -33,10 +33,9 @@ public class BonusAlly : Bonus
         {
             if (collision.transform.TryGetComponent<Archer>(out Archer archer) == true)
             {
-                Crowd crowd = archer.transform.parent.GetComponent<Crowd>();
-                _ally.Initialize(crowd);
                 _ally.transform.parent = archer.transform.parent;
-                crowd.AddAllyToList(_ally);
+                _ally.enabled = true;
+                _ally.Crowd.AddAllyToList(_ally);
                 Activate();
             }
         }
@@ -55,9 +54,7 @@ public class BonusAlly : Bonus
     {
         _isActivated = true;
         _animator.enabled = true;
-        _ally.enabled = true;
         _attacker.EnableInput();
         _renderer.material.color = _activatedColor;
-        Destroy(gameObject);
     }
 }
