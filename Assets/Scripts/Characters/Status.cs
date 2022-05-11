@@ -45,6 +45,6 @@ public class Status : MonoBehaviour
     private IEnumerator KillAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        _enemy.Kill();
+        _enemy.Damage();
     }
 }

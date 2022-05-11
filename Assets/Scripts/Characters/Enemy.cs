@@ -45,7 +45,7 @@ public class Enemy : MonoBehaviour
         _status.ApplyEffect(hitEffect);
     }
 
-    public virtual void Kill()
+    public virtual void Damage()
     {
         DisableStateMachine();
         _ragdoll.TurnOnRagdoll();

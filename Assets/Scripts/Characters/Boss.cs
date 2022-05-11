@@ -30,10 +30,10 @@ public class Boss : Enemy
         _finishZone.KillArchers(this.transform, _punchForce);
     }
 
-    public override void Kill()
+    public override void Damage()
     {
         if (_health <= 0)
-            base.Kill();
+            base.Damage();
 
         _health--;
     }

@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1300689297868367335, guid: e5dfc4a391f7a4a47aeb1aaa54054952, type: 3}
       propertyPath: m_IsKinematic
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2826359866162020114, guid: e5dfc4a391f7a4a47aeb1aaa54054952, type: 3}
       propertyPath: m_Enabled
@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8852315795805328604, guid: e5dfc4a391f7a4a47aeb1aaa54054952, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5dfc4a391f7a4a47aeb1aaa54054952, type: 3}

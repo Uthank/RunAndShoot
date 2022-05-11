@@ -7,19 +7,16 @@ public class FollowToPlayer : MonoBehaviour
     private Vector3 _offset;
     private King _king;
 
-    private void Awake()
+    private void Start()
     {
         _king = _crowd.GetComponentInChildren<King>();
         _offset = transform.position - _king.transform.position;
+        _king.Killed += OnTargetKilled;
     }
 
     private void Update()
     {
         transform.position = new Vector3(_king.transform.position.x, _king.transform.position.y, 0) + _offset;
-    }
-    private void OnEnable()
-    {
-        _king.Killed += OnTargetKilled;
     }
 
     private void OnDisable()

@@ -21,7 +21,13 @@ public class Crowd : MonoBehaviour
     {
         _mover = GetComponent<Mover>();
         _king = Instantiate(_king, transform);
+        _king.Killed += StopMover;
         CreateAllies();
+    }
+
+    private void OnDisable()
+    {
+        _king.Killed -= StopMover;
     }
 
     public void CreateAllies(UpgradeTypes upgradeType = UpgradeTypes.Additive, int count = 1)
@@ -54,8 +60,6 @@ public class Crowd : MonoBehaviour
             if (_paws.Count == 0)
             {
                 King.Kill();
-                _mover.DisableInput();
-                _mover.enabled = false;
             }
 
             Paw paw = _paws[0];
@@ -95,5 +99,11 @@ public class Crowd : MonoBehaviour
         _paws.Clear();
         _textField.enabled = false;
         return list;
+    }
+
+    private void StopMover()
+    {
+        _mover.DisableInput();
+        _mover.enabled = false;
     }
 }

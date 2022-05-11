@@ -18,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
         _frequency = new WaitForSeconds(_spawnFrequency);
     }
 
-    private void OnEnable()
+    private void Start()
     {
         _crowd.King.Killed += TurnOff;
     }
@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
     {
         if (_enemies.Count > 0)
             foreach (Enemy enemy in _enemies)
-                enemy.Kill();
+                enemy.Damage();
 
         TurnOff();
     }

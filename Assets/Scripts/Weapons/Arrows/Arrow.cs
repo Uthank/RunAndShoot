@@ -14,8 +14,9 @@ public class Arrow : MonoBehaviour
     private float _verticalOffset = 2;
     private Vector3 _startPoint;
     private Vector3 _endPoint;
+    private IEnumerator _flyCoroutine;
 
-    private void Awake()
+    private void OnEnable()
     {
         _rigidbody = GetComponent<Rigidbody>();
     }
@@ -24,14 +25,21 @@ public class Arrow : MonoBehaviour
     {
         if (other.TryGetComponent<Enemy>(out Enemy enemy) == true)
         {
-            transform.parent = enemy.transform;
-            Destroy(gameObject, 5f);
-            this.enabled = false;
+            StopCoroutine(_flyCoroutine);
 
             if (_type.HitEffect == EffectTypes.None)
-                enemy.Kill();
+                enemy.Damage();
             else
                 enemy.ReceiveHitEffect(_type.HitEffect);
+
+            if (other.TryGetComponent<Boss>(out Boss boss) == true)
+            {
+                transform.parent = other.transform;
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 
@@ -44,7 +52,8 @@ public class Arrow : MonoBehaviour
         Instantiate(_type.Model, transform);
         _startPoint = transform.position;
         _endPoint = transform.position + Vector3.right * _range;
-        StartCoroutine(Fly());
+        _flyCoroutine = Fly();
+        StartCoroutine(_flyCoroutine);
     }
 
     private IEnumerator Fly()
