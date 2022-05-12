@@ -15,6 +15,7 @@ public class Enemy : Character
     private EnemyStateMachine _enemyStateMachine;
 
     private King _target;
+    private EnemySpawner _spawner;
     private List<State> _states = new List<State>();
     private List<Transition> _transitions = new List<Transition>();
 
@@ -31,9 +32,10 @@ public class Enemy : Character
         _renderer.material.color = _aliveColor;
     }
 
-    public void SetTarget(King target)
+    public void Initialize(King target, EnemySpawner enemySpawner)
     {
         _target = target;
+        _spawner = enemySpawner;
     }
 
     public void ReceiveHitEffect(EffectTypes hitEffect)
@@ -43,7 +45,6 @@ public class Enemy : Character
 
     public virtual void Damage()
     {
-        IsAlive = false;
         DisableStateMachine();
         _ragdoll.TurnOnRagdoll();
         _renderer.material.color = _deathColor;
@@ -51,7 +52,11 @@ public class Enemy : Character
 
     public void DisableStateMachine()
     {
+        IsAlive = false;
         _enemyStateMachine.enabled = false;
+
+        if (_spawner != null)
+            _spawner.RemoveEnemy(this);
 
         foreach (var state in _states)
         {

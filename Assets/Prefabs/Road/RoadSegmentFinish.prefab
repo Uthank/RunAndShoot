@@ -935,7 +935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5792802832504046692, guid: 61efe0dc6374c4e4d8bed8ec75a95166, type: 3}
       propertyPath: _bossSpawnOffset.y
-      value: 25
+      value: 15.37
       objectReference: {fileID: 0}
     - target: {fileID: 8134021579041279041, guid: 61efe0dc6374c4e4d8bed8ec75a95166, type: 3}
       propertyPath: m_Size.y

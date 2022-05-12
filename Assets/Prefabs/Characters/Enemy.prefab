@@ -1993,6 +1993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 524853736944965622}
+  _frozen: {fileID: 1176157019699524429, guid: c7ac958ef66a5924bbe5a4758b71d4c4, type: 3}
 --- !u!1 &7086294374440392311
 GameObject:
   m_ObjectHideFlags: 0

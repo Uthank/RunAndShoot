@@ -1127,6 +1127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 2876823341451925866}
+  _frozen: {fileID: 0}
 --- !u!65 &2415441999094203906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1139,7 +1140,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
-  m_Center: {x: -0.86, y: 0.25, z: 0}
+  m_Center: {x: -0.86, y: 0.34, z: 0}
 --- !u!1 &5424063008567287500
 GameObject:
   m_ObjectHideFlags: 0

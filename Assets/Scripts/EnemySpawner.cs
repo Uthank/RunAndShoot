@@ -39,11 +39,17 @@ public class EnemySpawner : MonoBehaviour
 
     public void KillAll()
     {
+        TurnOff();
+
         if (_enemies.Count > 0)
             foreach (Enemy enemy in _enemies)
                 enemy.Damage();
+    }
 
-        TurnOff();
+    public void RemoveEnemy(Enemy enemy)
+    {
+        if (_enemies.Contains(enemy))
+            _enemies.Remove(enemy);
     }
 
     private IEnumerator SpawnEnemy()
@@ -53,7 +59,7 @@ public class EnemySpawner : MonoBehaviour
 
         Enemy enemy = Instantiate(_enemy, transform.position + new Vector3(offsetX, 0, offsetZ), Quaternion.Euler(0, 180, 0));
         _enemies.Add(enemy);
-        enemy.SetTarget(_crowd.King);
+        enemy.Initialize(_crowd.King, this);
         yield return _frequency;
         _spawn = null;
     }

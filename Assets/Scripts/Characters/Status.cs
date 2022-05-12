@@ -7,6 +7,7 @@ using UnityEngine;
 public class Status : MonoBehaviour
 {
     [SerializeField] private Renderer _renderer;
+    [SerializeField] private GameObject _frozen;
 
     private Enemy _enemy;
     private Animator _animator;
@@ -33,18 +34,9 @@ public class Status : MonoBehaviour
 
     private void Freeze()
     {
-        float killDelay = 1;
 
         _enemy.DisableStateMachine();
-        _renderer.material.color = Color.blue;
-        _rigidbody.velocity = Vector3.zero;
-        _animator.speed = 0;
-        StartCoroutine(KillAfterDelay(killDelay));
-    }
-
-    private IEnumerator KillAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        _enemy.Damage();
+        Instantiate(_frozen, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }
