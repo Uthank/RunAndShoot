@@ -20,25 +20,32 @@ public class Arrow : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
     }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.TryGetComponent<Enemy>(out Enemy enemy) == true)
+        if (other.TryGetComponent<BodyPart>(out BodyPart bodyPart) == true)
         {
-            StopCoroutine(_flyCoroutine);
-
-            if (_type.HitEffect == EffectTypes.None)
-                enemy.Damage();
-            else
-                enemy.ReceiveHitEffect(_type.HitEffect);
-
-            if (other.TryGetComponent<Boss>(out Boss boss) == true)
+            if (bodyPart.Character.GetType() == typeof(Enemy))
             {
-                transform.parent = other.transform;
-            }
-            else
-            {
-                Destroy(gameObject);
+                Enemy enemy = (Enemy)bodyPart.Character;
+
+                if (enemy.IsAlive == false)
+                    return;
+
+                if (_type.HitEffect == EffectTypes.None)
+                    enemy.Damage();
+                else
+                    enemy.ReceiveHitEffect(_type.HitEffect);
+
+                if (bodyPart.Character.GetType() == typeof(Boss))
+                {
+                    StopCoroutine(_flyCoroutine);
+                    transform.parent = bodyPart.transform;
+                    Destroy(gameObject, 5f);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }

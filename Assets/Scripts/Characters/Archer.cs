@@ -3,7 +3,7 @@ using UnityEngine;
 [RequireComponent(typeof(Ragdoll))]
 [RequireComponent(typeof(Attacker))]
 [RequireComponent(typeof(Animator))]
-public class Archer : MonoBehaviour
+public class Archer : Character
 {
     [SerializeField] protected Color _aliveColor;
     [SerializeField] protected Renderer _renderer;

@@ -8,7 +8,7 @@ public class BonusAlly : Bonus
     [SerializeField] private Color _deactivatedColor;
 
     private Animator _animator;
-    private Paw _ally;
+    private Paw _paw;
     private Attacker _attacker;
 
     private Color _activatedColor;
@@ -17,7 +17,7 @@ public class BonusAlly : Bonus
 
     private void Awake()
     {
-        _ally = GetComponent<Paw>();
+        _paw = GetComponent<Paw>();
         _animator = GetComponent<Animator>();
         _attacker = GetComponent<Attacker>();
     }
@@ -27,16 +27,19 @@ public class BonusAlly : Bonus
         Deactivate();
     }
 
-    private void OnCollisionEnter(UnityEngine.Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         if (_isActivated == false)
         {
-            if (collision.transform.TryGetComponent<Archer>(out Archer archer) == true)
+            if (other.TryGetComponent<BodyPart>(out BodyPart bodyPart) == true)
             {
-                _ally.transform.parent = archer.transform.parent;
-                _ally.enabled = true;
-                _ally.Crowd.AddAllyToList(_ally);
-                Activate();
+                if (bodyPart.Character != _paw)
+                {
+                    _paw.transform.parent = bodyPart.Character.transform.parent;
+                    _paw.enabled = true;
+                    bodyPart.Character.GetComponent<Archer>().Crowd.AddAllyToList(_paw);
+                    Activate();
+                }
             }
         }
     }
@@ -44,7 +47,7 @@ public class BonusAlly : Bonus
     private void Deactivate()
     {
         _animator.enabled = false;
-        _ally.enabled = false;
+        _paw.enabled = false;
         _attacker.DisableInput();
         _activatedColor = _renderer.material.color;
         _renderer.material.color = _deactivatedColor;

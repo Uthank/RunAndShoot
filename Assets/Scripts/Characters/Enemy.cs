@@ -1,37 +1,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(EnemyStateMachine))]
 [RequireComponent(typeof(Ragdoll))]
-[RequireComponent(typeof(Rigidbody))]
 [RequireComponent(typeof(Status))]
-public class Enemy : MonoBehaviour
+public class Enemy : Character
 {
-    [SerializeField] private King _target;
     [SerializeField] private Color _aliveColor;
     [SerializeField] private Color _deathColor;
     [SerializeField] private Renderer _renderer;
-    [SerializeField] private Status _status;
 
     private Ragdoll _ragdoll;
-    private Animator _animator;
-    private Rigidbody _rigidbody;
+    private Status _status;
     private EnemyStateMachine _enemyStateMachine;
 
+    private King _target;
     private List<State> _states = new List<State>();
     private List<Transition> _transitions = new List<Transition>();
 
+    public bool IsAlive { get; private set; } = true;
     public King Target => _target;
 
     private void Awake()
     {
-        _animator = GetComponent<Animator>();
-        _enemyStateMachine = GetComponent<EnemyStateMachine>();
-        _states.AddRange(GetComponents<State>());
-        _transitions.AddRange(GetComponents<Transition>());
         _ragdoll = GetComponent<Ragdoll>();
+        _states.AddRange(GetComponents<State>());
         _status = GetComponent<Status>();
+        _transitions.AddRange(GetComponents<Transition>());
+        _enemyStateMachine = GetComponent<EnemyStateMachine>();
         _renderer.material.color = _aliveColor;
     }
 
@@ -47,6 +43,7 @@ public class Enemy : MonoBehaviour
 
     public virtual void Damage()
     {
+        IsAlive = false;
         DisableStateMachine();
         _ragdoll.TurnOnRagdoll();
         _renderer.material.color = _deathColor;

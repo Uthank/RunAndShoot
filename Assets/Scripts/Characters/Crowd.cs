@@ -61,10 +61,12 @@ public class Crowd : MonoBehaviour
             {
                 King.Kill();
             }
-
-            Paw paw = _paws[0];
-            _paws.RemoveAt(0);
-            paw.Kill();
+            else
+            {
+                Paw paw = _paws[0];
+                _paws.RemoveAt(0);
+                paw.Kill();
+            }
 
             RedrawCount();
         }
