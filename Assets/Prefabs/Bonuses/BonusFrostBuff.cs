@@ -18,9 +18,8 @@ public class BonusFrostBuff : Bonus
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.TryGetComponent<BodyPart>(out BodyPart bodyPart) == true)
-            if (bodyPart.Character.GetType() == typeof(Paw) || bodyPart.Character.GetType() == typeof(King))
-                StartCoroutine(Buff(bodyPart.Character.GetComponent<Archer>()));
+        if (other.transform.TryGetComponent<Archer>(out Archer archer) == true)
+            StartCoroutine(Buff(archer));
     }
 
     private IEnumerator Buff(Archer archer)

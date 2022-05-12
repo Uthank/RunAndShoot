@@ -5,6 +5,7 @@ using UnityEngine;
 public class Arrow : MonoBehaviour
 {
     [SerializeField] private float _speed;
+    [SerializeField] private AnimationCurve _flatTrajectory;
 
     private AnimationCurve _trajectory;
     private float _range;
@@ -15,16 +16,22 @@ public class Arrow : MonoBehaviour
     private Vector3 _startPoint;
     private Vector3 _endPoint;
     private IEnumerator _flyCoroutine;
+    private bool _isHit = false;
+    private Collider _collider;
 
     private void OnEnable()
     {
         _rigidbody = GetComponent<Rigidbody>();
+        _collider = GetComponent<Collider>();
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if (other.TryGetComponent<BodyPart>(out BodyPart bodyPart) == true)
+        if (_isHit == false)
+
+        if (collision.collider.TryGetComponent<BodyPart>(out BodyPart bodyPart) == true)
         {
-            if (bodyPart.Character.GetType() == typeof(Enemy))
+            if (bodyPart.Character.GetType() == typeof(Enemy) || bodyPart.Character.GetType() == typeof(Boss))
             {
                 Enemy enemy = (Enemy)bodyPart.Character;
 
@@ -36,9 +43,14 @@ public class Arrow : MonoBehaviour
                 else
                     enemy.ReceiveHitEffect(_type.HitEffect);
 
+                _isHit = true;
+                _collider.enabled = false;
+                _rigidbody.isKinematic = true;
+
                 if (bodyPart.Character.GetType() == typeof(Boss))
                 {
                     StopCoroutine(_flyCoroutine);
+                    transform.position = collision.GetContact(0).point;
                     transform.parent = bodyPart.transform;
                     Destroy(gameObject, 5f);
                 }
@@ -50,9 +62,13 @@ public class Arrow : MonoBehaviour
         }
     }
 
-    public void Initialize(AnimationCurve trajectory, float range, ArrowType type)
+    public void Initialize(float range, ArrowType type, AnimationCurve trajectory = null)
     {
-        _trajectory = trajectory;
+        if (_trajectory == null)
+            _trajectory = _flatTrajectory;
+        else
+            _trajectory = trajectory;
+
         _range = range;
         _type = type;
 

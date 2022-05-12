@@ -31,13 +31,13 @@ public class BonusAlly : Bonus
     {
         if (_isActivated == false)
         {
-            if (other.TryGetComponent<BodyPart>(out BodyPart bodyPart) == true)
+            if (other.TryGetComponent<Archer>(out Archer archer) == true)
             {
-                if (bodyPart.Character != _paw)
+                if (archer != _paw)
                 {
-                    _paw.transform.parent = bodyPart.Character.transform.parent;
+                    _paw.transform.parent = archer.transform.parent;
                     _paw.enabled = true;
-                    bodyPart.Character.GetComponent<Archer>().Crowd.AddAllyToList(_paw);
+                    archer.Crowd.AddAllyToList(_paw);
                     Activate();
                 }
             }

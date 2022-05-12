@@ -1859,7 +1859,7 @@ MonoBehaviour:
   Transitions:
   - {fileID: 730683246821464828}
   - {fileID: 3305930136267286047}
-  _speed: 5
+  _speed: 8
 --- !u!114 &3305930136267286047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1889,7 +1889,7 @@ MonoBehaviour:
   Transitions:
   - {fileID: 730683246821464828}
   - {fileID: 6770732740569684428}
-  _speed: 5
+  _speed: 8
 --- !u!114 &6770732740569684428
 MonoBehaviour:
   m_ObjectHideFlags: 0

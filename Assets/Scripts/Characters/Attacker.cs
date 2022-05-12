@@ -60,10 +60,10 @@ public class Attacker : MonoBehaviour
         if (_instantiatedWeapon == null)
             _instantiatedWeapon = Instantiate(_currentWeapon.Model, _weaponHolder.transform);
 
-        transform.LookAt(transform.position + Quaternion.Euler(0, -90, 0) * (target.position - transform.position));
         _animator.SetTrigger(_shootAnimation);
+        transform.rotation = Quaternion.FromToRotation(Vector3.right, new Vector3(target.position.x, 0, target.position.z) - new Vector3(transform.position.x, 0, transform.position.z));
         Arrow arrow = Instantiate(_arrow, transform.position + transform.rotation * Vector3.right, Quaternion.FromToRotation(Vector3.right, target.position - transform.position).normalized);
-        arrow.Initialize(_trajectory, _maxChargePower, _currentWeapon.ArrowType);
+        arrow.Initialize(_maxChargePower, _currentWeapon.ArrowType);
     }
 
     private void StartChargeAttack()
@@ -84,7 +84,7 @@ public class Attacker : MonoBehaviour
         _lineRenderer.positionCount = 0;
         _animator.SetBool(_chargeAnimation, false);
         Arrow arrow = Instantiate(_arrow, transform.position + Vector3.right, Quaternion.identity);
-        arrow.Initialize(_trajectory, _chargePower, _currentWeapon.ArrowType);
+        arrow.Initialize(_chargePower, _currentWeapon.ArrowType, _trajectory);
         Destroy(_instantiatedWeapon);
     }
 
