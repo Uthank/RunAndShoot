@@ -11,6 +11,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 779235469670228969, guid: e5dfc4a391f7a4a47aeb1aaa54054952, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b859bf84c9418247aa81fd058aff33c, type: 2}
     - target: {fileID: 1300689297868367335, guid: e5dfc4a391f7a4a47aeb1aaa54054952, type: 3}
       propertyPath: m_IsKinematic
       value: 0
@@ -104,4 +108,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 2761269785612896810}
-  _deactivatedColor: {r: 0, g: 0.43137255, b: 0.99215686, a: 1}
+  _activatedMaterial: {fileID: 2100000, guid: adbd2087473e9464e9f1c030eddaeef6, type: 2}

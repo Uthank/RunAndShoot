@@ -58,8 +58,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _gate: {x: -10.5, y: 0, z: 0}
-  _firstPosition: {x: -12, y: 0, z: 2.5}
+  _firstPosition: {x: -12, y: 0, z: 3}
   _stepX: 0
   _stepZ: 0
   _boss: {fileID: 0}
-  _targetOffset: {x: 0, y: 0, z: 0}
+  _bossSpawnOffset: {x: 0, y: 0, z: 0}
+  _positioningSpeed: 5
+  _cameraPosition: {x: -151.54, y: 9.02, z: 0}

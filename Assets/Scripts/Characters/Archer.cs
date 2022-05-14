@@ -4,10 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(Attacker))]
 [RequireComponent(typeof(Animator))]
 public class Archer : Character
-{
-    [SerializeField] protected Color _aliveColor;
+{   
     [SerializeField] protected Renderer _renderer;
-    [SerializeField] protected Color _deathColor;
+    [SerializeField] protected Material _deathMaterial;
 
     protected Ragdoll _ragdoll;
 
@@ -21,7 +20,6 @@ public class Archer : Character
         _ragdoll = GetComponent<Ragdoll>();
         Attacker = GetComponent<Attacker>();
         Animator = GetComponent<Animator>();
-        _renderer.material.color = _aliveColor;
     }
 
     private void OnEnable()
@@ -38,6 +36,6 @@ public class Archer : Character
     {
         Attacker.DisableInput();
         _ragdoll.TurnOnRagdoll();
-        _renderer.material.color = _deathColor;
+        _renderer.material = _deathMaterial;
     }
 }

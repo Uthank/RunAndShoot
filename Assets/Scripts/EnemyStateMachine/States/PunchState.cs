@@ -4,11 +4,13 @@ using UnityEngine;
 public class PunchState : State
 {
     private Animator _animator;
+    private Enemy _enemy;
     private string _punchAnimation = "Punch";
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _enemy = GetComponent<Enemy>();
     }
 
     private void OnEnable()
@@ -24,7 +26,7 @@ public class PunchState : State
         if (Target.IsAlive == true)
         {
             Target.Damage();
-            Destroy(gameObject);
+            _enemy.Damage();
         }
     }
 }

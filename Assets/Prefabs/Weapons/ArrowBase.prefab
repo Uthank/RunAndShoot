@@ -70,6 +70,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _hitParticleSystem: {fileID: 1900887206596526677, guid: 0bb777822e36a5f4587ada136cca6a22, type: 3}
 --- !u!54 &8421972239558401127
 Rigidbody:
   m_ObjectHideFlags: 0

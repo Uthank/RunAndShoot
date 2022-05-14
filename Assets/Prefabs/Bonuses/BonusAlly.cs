@@ -5,13 +5,13 @@ using UnityEngine;
 public class BonusAlly : Bonus
 {
     [SerializeField] private Renderer _renderer;
-    [SerializeField] private Color _deactivatedColor;
+    [SerializeField] private Material _activatedMaterial;
 
     private Animator _animator;
     private Paw _paw;
     private Attacker _attacker;
 
-    private Color _activatedColor;
+    private Material _deactivatedMaterial;
     private bool _isActivated = false;
 
 
@@ -20,6 +20,7 @@ public class BonusAlly : Bonus
         _paw = GetComponent<Paw>();
         _animator = GetComponent<Animator>();
         _attacker = GetComponent<Attacker>();
+        _deactivatedMaterial = _renderer.material;
     }
 
     private void Start()
@@ -49,8 +50,7 @@ public class BonusAlly : Bonus
         _animator.enabled = false;
         _paw.enabled = false;
         _attacker.DisableInput();
-        _activatedColor = _renderer.material.color;
-        _renderer.material.color = _deactivatedColor;
+        _renderer.material = _deactivatedMaterial;
     }
 
     private void Activate()
@@ -58,6 +58,6 @@ public class BonusAlly : Bonus
         _isActivated = true;
         _animator.enabled = true;
         _attacker.EnableInput();
-        _renderer.material.color = _activatedColor;
+        _renderer.material = _activatedMaterial;
     }
 }

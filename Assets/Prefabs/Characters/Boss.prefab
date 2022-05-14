@@ -990,9 +990,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f43ca7da727a2f4096745c363f02651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aliveColor: {r: 0.7264151, g: 0.03769135, b: 0.03769135, a: 0}
-  _deathColor: {r: 0, g: 0, b: 0, a: 0}
+  _deathMaterial: {fileID: 2100000, guid: 69a9bd4760ad6ba43b299e44863e801f, type: 2}
   _renderer: {fileID: 2876823341451925866}
+  _speed: 5
   _body: {fileID: 7327862540237348233}
   _punchForce: 30
   _health: 50
@@ -1127,7 +1127,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderer: {fileID: 2876823341451925866}
-  _frozen: {fileID: 0}
+  _frozen: {fileID: 1176157019699524429, guid: c7ac958ef66a5924bbe5a4758b71d4c4, type: 3}
+  _FrozenDuration: 1
+  _frozenMaterial: {fileID: 2100000, guid: 046fc4ef171df5645b85facff277e48e, type: 2}
 --- !u!65 &2415441999094203906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1222,7 +1224,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -876546973899608171, guid: f92da1d34d543a2448a359a479f46a04, type: 3}
+  - {fileID: 2100000, guid: dab40beba6b7c894bae178d64573c91b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

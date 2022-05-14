@@ -1,14 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(EnemyStateMachine))]
 [RequireComponent(typeof(Ragdoll))]
 [RequireComponent(typeof(Status))]
 public class Enemy : Character
 {
-    [SerializeField] private Color _aliveColor;
-    [SerializeField] private Color _deathColor;
+    [SerializeField] private Material _deathMaterial;
     [SerializeField] private Renderer _renderer;
+    [SerializeField] private float _speed = 8f;
 
     private Ragdoll _ragdoll;
     private Status _status;
@@ -19,7 +20,10 @@ public class Enemy : Character
     private List<State> _states = new List<State>();
     private List<Transition> _transitions = new List<Transition>();
 
+    public event UnityAction OnSpeedChanged;
+
     public bool IsAlive { get; private set; } = true;
+    public float Speed => _speed;
     public King Target => _target;
 
     private void Awake()
@@ -29,7 +33,6 @@ public class Enemy : Character
         _status = GetComponent<Status>();
         _transitions.AddRange(GetComponents<Transition>());
         _enemyStateMachine = GetComponent<EnemyStateMachine>();
-        _renderer.material.color = _aliveColor;
     }
 
     public void Initialize(King target, EnemySpawner enemySpawner)
@@ -47,7 +50,7 @@ public class Enemy : Character
     {
         DisableStateMachine();
         _ragdoll.TurnOnRagdoll();
-        _renderer.material.color = _deathColor;
+        _renderer.material = _deathMaterial;
     }
 
     public void DisableStateMachine()
@@ -67,5 +70,11 @@ public class Enemy : Character
         {
             transition.enabled = false;
         }
+    }
+
+    public void Slow()
+    {
+        _speed = 2f;
+        OnSpeedChanged?.Invoke();
     }
 }

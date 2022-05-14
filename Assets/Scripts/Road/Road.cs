@@ -6,6 +6,7 @@ public class Road : MonoBehaviour
     [SerializeField] private RoadSegment _finish;
     [SerializeField] private SegmentGroup[] _segmentGroups;
     [SerializeField] private EnemySpawner _enemySpawner;
+    [SerializeField] private FollowToPlayer _cameraFollow;
 
     private Vector3 _placingPosition = Vector3.zero;
 
@@ -19,7 +20,7 @@ public class Road : MonoBehaviour
         }
 
         GameObject finish = InstantiateSegment(_finish);
-        finish.GetComponentInChildren<FinishZone>().SetEnemySpawner(_enemySpawner);
+        finish.GetComponentInChildren<FinishZone>().Initialize(_enemySpawner, _cameraFollow);
     }
 
     private GameObject InstantiateSegment(RoadSegment segment)

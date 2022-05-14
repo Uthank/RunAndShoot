@@ -14,3 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _model: {fileID: 4856609477376230346, guid: cc3ce12d61f1e154c9a15db48ec9d838, type: 3}
   _arrowType: {fileID: 11400000, guid: 4c4d602b4d4444b458a80eeeba923061, type: 2}
+  _DrawedLineColor:
+    serializedVersion: 2
+    key0: {r: 0, g: 0.23313046, b: 1, a: 1}
+    key1: {r: 0, g: 0.23313046, b: 1, a: 1}
+    key2: {r: 0.7137255, g: 0.8392157, b: 0.6392157, a: 0.28235295}
+    key3: {r: 0.7137255, g: 0.8392157, b: 0.6392157, a: 0.28235295}
+    key4: {r: 0.7137255, g: 0.8392157, b: 0.6392157, a: 0.28235295}
+    key5: {r: 0.7137255, g: 0.8392157, b: 0.6392157, a: 0.28235295}
+    key6: {r: 0.7137255, g: 0.8392157, b: 0.6392157, a: 0.28235295}
+    key7: {r: 0.7137255, g: 0.8392157, b: 0.6392157, a: 0.28235295}
+    ctime0: 0
+    ctime1: 65535
+    ctime2: 0
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 0
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 2
+    m_NumAlphaKeys: 2

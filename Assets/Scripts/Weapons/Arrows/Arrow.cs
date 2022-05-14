@@ -6,6 +6,7 @@ public class Arrow : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private AnimationCurve _flatTrajectory;
+    [SerializeField] private ParticleSystem _hitParticleSystem;
 
     private AnimationCurve _trajectory;
     private float _range;
@@ -39,9 +40,14 @@ public class Arrow : MonoBehaviour
                     return;
 
                 if (_type.HitEffect == EffectTypes.None)
-                    enemy.Damage();
-                else
-                    enemy.ReceiveHitEffect(_type.HitEffect);
+                    {
+                        enemy.Damage();
+                        Instantiate(_hitParticleSystem, collision.GetContact(0).point, Quaternion.Euler(0, 180, 0) * transform.rotation);
+                    }
+                    else
+                    {
+                        enemy.ReceiveHitEffect(_type.HitEffect);
+                    }
 
                 _isHit = true;
                 _collider.enabled = false;

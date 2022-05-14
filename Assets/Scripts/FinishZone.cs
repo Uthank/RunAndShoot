@@ -11,6 +11,7 @@ public class FinishZone : MonoBehaviour
     [SerializeField] private Boss _boss;
     [SerializeField] private Vector3 _bossSpawnOffset;
     [SerializeField] protected float _positioningSpeed = 5;
+    [SerializeField] Vector3 _cameraPosition;
 
     private PlayerInput _playerInput;
 
@@ -18,6 +19,7 @@ public class FinishZone : MonoBehaviour
     private float _epsylon = .3f;
     private string _finishZoneStayAnimation = "FinishPose";
     private EnemySpawner _enemySpawner;
+    private FollowToPlayer _cameraFollow;
 
     private void Awake()
     {
@@ -35,12 +37,15 @@ public class FinishZone : MonoBehaviour
             _archers.AddRange(crowd.GetArchers());
             MoveCrowdOnPositions();
             BossSpawn();
+            crowd.EnableTapMessage();
+            StartCoroutine(MoveCamera());
         }
     }
 
-    public void SetEnemySpawner(EnemySpawner enemySpawner)
+    public void Initialize(EnemySpawner enemySpawner, FollowToPlayer cameraFollow)
     {
         _enemySpawner = enemySpawner;
+        _cameraFollow = cameraFollow;
     }
 
     public IEnumerator MoveThroughtPath(Archer archer, Vector3[] positions)
@@ -71,7 +76,7 @@ public class FinishZone : MonoBehaviour
     {
         for (int i = 0; i < _archers.Count; i++)
         {
-            Vector3 position = _firstPosition + new Vector3( -(i / 5) * _stepX, 0, -(i % 5f) * _stepZ);
+            Vector3 position = _firstPosition + new Vector3( -(i / 5) * _stepX, 0, -(i % 5f + .3f * (i % 10f / 5f % 2f)) * _stepZ);
             StartCoroutine(MoveThroughtPath(_archers[i], new Vector3[] { transform.position + _gate, transform.position + position }));
         }
     }
@@ -86,5 +91,16 @@ public class FinishZone : MonoBehaviour
     {
         _boss = Instantiate(_boss, transform.position + _bossSpawnOffset, Quaternion.Euler(0, 180, 0));
         _boss.Initialize(transform.position + _gate, _enemySpawner, this);
+    }
+
+    private IEnumerator MoveCamera()
+    {
+        _cameraFollow.enabled = false;
+
+        for (float i = 0; i < 1; i += Time.deltaTime)
+        {
+            _cameraFollow.gameObject.transform.position = Vector3.Lerp(_cameraFollow.gameObject.transform.position, _cameraPosition, i);
+            yield return null;
+        }
     }
 }

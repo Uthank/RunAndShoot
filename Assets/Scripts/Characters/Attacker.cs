@@ -24,6 +24,7 @@ public class Attacker : MonoBehaviour
     private IEnumerator _charge;
     private float _chargePower;
     private float _maxChargePower = 30;
+    private ArrowType _currentWeaponArrowType;
 
 
     private void Awake()
@@ -69,11 +70,12 @@ public class Attacker : MonoBehaviour
     private void StartChargeAttack()
     {
         _instantiatedWeapon = Instantiate(_currentWeapon.Model, _weaponHolder.transform);
+        _currentWeaponArrowType = _currentWeapon.ArrowType;
 
         _animator.SetBool(_chargeAnimation, true);
         _chargePower = 3;
 
-        _charge = Charge();
+        _charge = Charge(_currentWeapon.DrawedLineColor);
         StartCoroutine(_charge);
     }
 
@@ -84,12 +86,13 @@ public class Attacker : MonoBehaviour
         _lineRenderer.positionCount = 0;
         _animator.SetBool(_chargeAnimation, false);
         Arrow arrow = Instantiate(_arrow, transform.position + Vector3.right, Quaternion.identity);
-        arrow.Initialize(_chargePower, _currentWeapon.ArrowType, _trajectory);
+        arrow.Initialize(_chargePower, _currentWeaponArrowType, _trajectory);
         Destroy(_instantiatedWeapon);
     }
 
-    private void DrawLine()
+    private void DrawLine(Gradient drawedLineColor)
     {
+        _lineRenderer.colorGradient = drawedLineColor;
         Vector3[] positions = new Vector3[_trajectoryQuality + 1];
         Vector3 startPoint = Vector3.up + transform.position;
         positions[0] = startPoint;
@@ -104,18 +107,18 @@ public class Attacker : MonoBehaviour
         _lineRenderer.SetPositions(positions);
     }
 
-    private IEnumerator Charge()
+    private IEnumerator Charge(Gradient drawedLineColor)
     {
         while (_chargePower < _maxChargePower)
         {
             _chargePower += Time.deltaTime * _chargeSpeed;
-            DrawLine();
+            DrawLine(drawedLineColor);
             yield return null;
         }
 
         while (true)
         {
-            DrawLine();
+            DrawLine(drawedLineColor);
             yield return null;
         }
     }

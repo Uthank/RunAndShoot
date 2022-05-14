@@ -39,11 +39,18 @@ public class EnemySpawner : MonoBehaviour
 
     public void KillAll()
     {
-        TurnOff();
-
         if (_enemies.Count > 0)
-            foreach (Enemy enemy in _enemies)
+            foreach (Enemy enemy in _enemies.ToArray())
                 enemy.Damage();
+
+        TurnOff();
+    }
+
+    public void SlowAll()
+    {
+        if (_enemies.Count > 0)
+            foreach (Enemy enemy in _enemies.ToArray())
+                enemy.Slow();
     }
 
     public void RemoveEnemy(Enemy enemy)

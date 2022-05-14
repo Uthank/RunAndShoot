@@ -1,24 +1,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Collections;
 
 [RequireComponent(typeof(Mover))]
 public class Crowd : MonoBehaviour
 {
     [SerializeField] King _king;
     [SerializeField] private Paw _ally;
-    [SerializeField] private TMP_Text _textField;
+    [SerializeField] private TMP_Text _countTextField;
+    [SerializeField] private TapMesage _tapTextField;
 
     private Mover _mover;
 
     private List<Paw> _paws = new List<Paw>();
-    private Vector3 _allySpawnOffset = new Vector3(-1.5f, 0, 0);
+    private Vector3 _allySpawnOffset = new Vector3(-.5f, 0, 0);
     private Vector3 _allySpawnOffsetExtends = new Vector3(1, 0, 1);
+    private Color _defaultColor;
+    private Color _currentColor;
 
     public King King => _king;
 
     private void Awake()
     {
+        _defaultColor = _countTextField.color;
+        _currentColor = _defaultColor;
         _mover = GetComponent<Mover>();
         _king = Instantiate(_king, transform);
         _king.Killed += StopMover;
@@ -80,7 +86,8 @@ public class Crowd : MonoBehaviour
 
     public void RedrawCount()
     {
-        _textField.text = _paws.Count.ToString();
+        _countTextField.color = _currentColor;
+        _countTextField.text = _paws.Count.ToString();
     }
 
     public List<Archer> GetArchers()
@@ -99,8 +106,33 @@ public class Crowd : MonoBehaviour
         }
 
         _paws.Clear();
-        _textField.enabled = false;
+        _countTextField.enabled = false;
         return list;
+    }
+
+    public void EnableTapMessage()
+    {
+        _tapTextField.enabled = true;
+    }
+
+    public void DisableTapMessage()
+    {
+        _tapTextField.enabled = false;
+    }
+
+    public void SetColor(Color color, float duration)
+    {
+        StartCoroutine(ChangeColor(color, duration));
+    }
+
+    private IEnumerator ChangeColor(Color color, float duration)
+    {
+        _currentColor = color;
+        RedrawCount();
+        yield return new WaitForSeconds(duration);
+        _currentColor = _defaultColor;
+        RedrawCount();
+
     }
 
     private void StopMover()

@@ -8,6 +8,8 @@ public class Status : MonoBehaviour
 {
     [SerializeField] private Renderer _renderer;
     [SerializeField] private GameObject _frozen;
+    [SerializeField] float _FrozenDuration = 1;
+    [SerializeField] Material _frozenMaterial;
 
     private Enemy _enemy;
     private Animator _animator;
@@ -25,17 +27,20 @@ public class Status : MonoBehaviour
         switch (hitEffect)
         {
             case EffectTypes.Freeze:
-                Freeze();
+                StartCoroutine(Freeze());
                 break;
             default:
                 throw new MissingReferenceException();
         }
     }
 
-    private void Freeze()
+    private IEnumerator Freeze()
     {
-
         _enemy.DisableStateMachine();
+        _animator.speed = 0;
+        _rigidbody.isKinematic = true;
+        _renderer.material = _frozenMaterial;
+        yield return new WaitForSeconds(_FrozenDuration);
         Instantiate(_frozen, transform.position, transform.rotation);
         Destroy(gameObject);
     }
