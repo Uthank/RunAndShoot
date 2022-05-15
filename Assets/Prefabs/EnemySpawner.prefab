@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: 3837695140461073321, guid: 4d12d5bdac67bd24c9888e4a37914343, type: 3}
   _crowd: {fileID: 0}
-  _spawnFrequency: 0.5
+  _spawnFrequency: 0.2
 --- !u!114 &2063916457718842192
 MonoBehaviour:
   m_ObjectHideFlags: 0

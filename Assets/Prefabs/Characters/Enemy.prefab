@@ -1830,7 +1830,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _deathMaterial: {fileID: 2100000, guid: 69a9bd4760ad6ba43b299e44863e801f, type: 2}
   _renderer: {fileID: 524853736944965622}
-  _speed: 8
+  _speed: 6
 --- !u!114 &965355771100059715
 MonoBehaviour:
   m_ObjectHideFlags: 0

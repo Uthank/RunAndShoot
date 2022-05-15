@@ -42,7 +42,8 @@ public class Arrow : MonoBehaviour
                 if (_type.HitEffect == EffectTypes.None)
                     {
                         enemy.Damage();
-                        Instantiate(_hitParticleSystem, collision.GetContact(0).point, Quaternion.Euler(0, 180, 0) * transform.rotation);
+                        var particles = Instantiate(_hitParticleSystem, collision.GetContact(0).point, Quaternion.Euler(0, 180, 0) * transform.rotation);
+                        Destroy(particles, particles.main.duration);
                     }
                     else
                     {
