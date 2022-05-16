@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Empty
   m_EditorClassIdentifier: 
   _prefab: {fileID: 499311612861587482, guid: 125d5fdaead0ecb4496376b639c55a0c, type: 3}
-  _offsetToNextPlacingPosition: {x: -6, y: 0, z: 0}
+  _offsetToNextPlacingPosition: {x: -3, y: 0, z: 0}

@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ThornPillar
   m_EditorClassIdentifier: 
   _prefab: {fileID: 7808963028941624276, guid: 2ae212a6cd3ff8a47996a69a2aa02dfd, type: 3}
-  _offsetToNextPlacingPosition: {x: -6, y: 0, z: 0}
+  _offsetToNextPlacingPosition: {x: -3, y: 0, z: 0}

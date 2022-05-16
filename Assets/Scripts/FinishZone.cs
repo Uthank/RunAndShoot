@@ -76,7 +76,7 @@ public class FinishZone : MonoBehaviour
     {
         for (int i = 0; i < _archers.Count; i++)
         {
-            Vector3 position = _firstPosition + new Vector3( -(i / 5) * _stepX, 0, -(i % 5f + .3f * (i % 10f / 5f % 2f)) * _stepZ);
+            Vector3 position = _firstPosition + new Vector3( -(i / 5) * _stepX, 0, -(i % 5f + .5f * (i % 10f / 5f % 2f)) * _stepZ);
             StartCoroutine(MoveThroughtPath(_archers[i], new Vector3[] { transform.position + _gate, transform.position + position }));
         }
     }

@@ -6,6 +6,7 @@ using TMPro;
 public class TapMesage : MonoBehaviour
 {
     [SerializeField] AnimationCurve _scaleCurve;
+    [SerializeField] float _speed;
 
     private TMP_Text _text;
     private float _scale;
@@ -24,7 +25,7 @@ public class TapMesage : MonoBehaviour
 
     private void Update()
     {
-        _time += Time.deltaTime;
+        _time += Time.deltaTime * _speed;
         _scale = _scaleCurve.Evaluate(_time % 1);
         transform.localScale = Vector3.one * _scale;
     }
