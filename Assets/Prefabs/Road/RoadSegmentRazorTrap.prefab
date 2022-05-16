@@ -349,6 +349,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: RazorTrap
       objectReference: {fileID: 0}
+    - target: {fileID: 3561335028103680248, guid: 83a28f9ba5483744098c97d3805b7a16, type: 3}
+      propertyPath: _rotateSpeed
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 6862187815274944356, guid: 83a28f9ba5483744098c97d3805b7a16, type: 3}
+      propertyPath: _rotateSpeed
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83a28f9ba5483744098c97d3805b7a16, type: 3}
 --- !u!4 &2287655043863431447 stripped

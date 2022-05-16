@@ -21,6 +21,4 @@ MonoBehaviour:
   _rightValue: 2
   _segments:
   - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}
-  - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}
   - {fileID: 11400000, guid: e291d8cae9fbefa4c9c2d2037921f7de, type: 2}
-  - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}
