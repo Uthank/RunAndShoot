@@ -951,7 +951,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5792802832504046692, guid: 61efe0dc6374c4e4d8bed8ec75a95166, type: 3}
       propertyPath: _cameraPosition.x
-      value: -172.54
+      value: -130.54
       objectReference: {fileID: 0}
     - target: {fileID: 5792802832504046692, guid: 61efe0dc6374c4e4d8bed8ec75a95166, type: 3}
       propertyPath: _positioningSpeed

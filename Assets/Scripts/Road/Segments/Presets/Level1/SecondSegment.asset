@@ -20,5 +20,8 @@ MonoBehaviour:
   _rightUpgradeType: 0
   _rightValue: 2
   _segments:
+  - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}
   - {fileID: 11400000, guid: 0460f8eca9ef5ab409ea52c029cdebc2, type: 2}
   - {fileID: 11400000, guid: acd2994219ac14841bddfb7d99e09598, type: 2}
+  - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}
+  - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}

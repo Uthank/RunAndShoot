@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: RazorTrap
   m_EditorClassIdentifier: 
   _prefab: {fileID: 871604426998551322, guid: 9dde81bcd7f1d2c43a93ef1a1bed5aa2, type: 3}
-  _offsetToNextPlacingPosition: {x: -12, y: 0, z: 0}
+  _offsetToNextPlacingPosition: {x: -6, y: 0, z: 0}

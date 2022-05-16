@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: TwoThornPillars
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1484782636987654230, guid: 88d294deff90ea84ca32aac5d26f95a7, type: 3}
-  _offsetToNextPlacingPosition: {x: -12, y: 0, z: 0}
+  _offsetToNextPlacingPosition: {x: -6, y: 0, z: 0}

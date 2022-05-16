@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: SpikesLeft
   m_EditorClassIdentifier: 
   _prefab: {fileID: 1575684742984483702, guid: 3099f36b44e7ac847a3ff4da2305b4b6, type: 3}
-  _offsetToNextPlacingPosition: {x: -12, y: 0, z: 0}
+  _offsetToNextPlacingPosition: {x: -6, y: 0, z: 0}

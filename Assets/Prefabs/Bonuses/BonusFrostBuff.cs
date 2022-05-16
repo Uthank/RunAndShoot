@@ -2,21 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Renderer))]
 public class BonusFrostBuff : Bonus
 {
     [SerializeField] Weapon _weapon;
     [SerializeField] Color _colorBuffedCrowdTMPText;
+    [SerializeField] GameObject _model;
+    [SerializeField] AnimationCurve _jumpCurve;
 
     private Renderer _renderer;
     private List<Attacker> _attackers = new List<Attacker>();
     private float _duration = 3;
     private WaitForSeconds _baffDuration;
+    private float _time;
 
     private void Awake()
     {
         _baffDuration = new WaitForSeconds(_duration);
-        _renderer = GetComponent<Renderer>();
+        _renderer = GetComponentInChildren<Renderer>();
+    }
+
+    private void Update()
+    {
+        _time = (_time + Time.deltaTime) % 1;
+        _model.transform.position = transform.position + new Vector3(0, _jumpCurve.Evaluate(_time), 0);
     }
 
     private void OnTriggerEnter(Collider other)
