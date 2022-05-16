@@ -94,6 +94,8 @@ public class Crowd : MonoBehaviour
     {
         List<Archer> list = new List<Archer>();
 
+        King.transform.parent = null;
+        King.GetComponent<Attacker>().DisableInput();
         list.Add(King);
 
         foreach (var paw in _paws)
