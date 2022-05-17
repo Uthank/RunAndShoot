@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca0190c41df3bd14090d3afbf773e007, type: 3}
   m_Name: Finish
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 1166060842393238313, guid: 100dcdafe68dddd4ba618b9c9d62fcd8, type: 3}
+  _prefab: {fileID: 2748091129229628219, guid: 1c52bbef2ef0f514d8304b7cecd2cf2f, type: 3}
   _offsetToNextPlacingPosition: {x: -27, y: 0, z: 0}

@@ -231,6 +231,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textField: {fileID: 0}
+  _materialGood: {fileID: 2100000, guid: 7fca95e8b745c5846bcfbccb827b5315, type: 2}
+  _materialBad: {fileID: 2100000, guid: 259b8d27c1fb97249bfebb3bc67afc65, type: 2}
 --- !u!65 &6192253044856219530
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -341,6 +343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _textField: {fileID: 0}
+  _materialGood: {fileID: 2100000, guid: 7fca95e8b745c5846bcfbccb827b5315, type: 2}
+  _materialBad: {fileID: 2100000, guid: 259b8d27c1fb97249bfebb3bc67afc65, type: 2}
 --- !u!65 &5583294087994766966
 BoxCollider:
   m_ObjectHideFlags: 0

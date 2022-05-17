@@ -10,7 +10,7 @@ public class Mover : MonoBehaviour
     private Rigidbody _rigidbody;
     private PlayerInput _playerInput;
     private bool _isMove = false;
-    private float _maxDistance = 3f;
+    private float _maxDistance = 4f;
     private float _clampTouch = 0.25f;
 
     private void Awake()

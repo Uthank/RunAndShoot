@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weapon: {fileID: 11400000, guid: bb29c822c8b404b4d8df80a7c7a3bd9a, type: 2}
-  _colorBuffedCrowdTMPText: {r: 0.0509078, g: 0.71075654, b: 0.9811321, a: 1}
+  _colorBuffedCrowdTMPText: {r: 0.15686275, g: 0.88235295, b: 0.9607843, a: 1}
   _model: {fileID: 5550390342904520868}
   _jumpCurve:
     serializedVersion: 2

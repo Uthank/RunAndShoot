@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ThirdSegment
   m_EditorClassIdentifier: 
   _upgradeSegment: {fileID: 11400000, guid: 106afefad2430634488de18aee4949d0, type: 2}
-  _leftUpgradeGoodness: 1
+  _leftGoodness: 1
   _leftUpgradeType: 0
   _leftValue: 8
   _rightGoodness: 0

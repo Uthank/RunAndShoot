@@ -25,6 +25,7 @@ public class Attacker : MonoBehaviour
     private float _chargePower;
     private float _maxChargePower = 30;
     private ArrowType _currentWeaponArrowType;
+    private Vector3 _tempPosition;
 
 
     private void Awake()
@@ -61,8 +62,8 @@ public class Attacker : MonoBehaviour
         if (_instantiatedWeapon == null)
             _instantiatedWeapon = Instantiate(_currentWeapon.Model, _weaponHolder.transform);
 
-        _animator.SetTrigger(_shootAnimation);
         transform.rotation = Quaternion.FromToRotation(Vector3.right, new Vector3(target.position.x, 0, target.position.z) - new Vector3(transform.position.x, 0, transform.position.z));
+        _animator.SetTrigger(_shootAnimation);
         Arrow arrow = Instantiate(_arrow, transform.position + transform.rotation * Vector3.right, Quaternion.FromToRotation(Vector3.right, target.position - transform.position).normalized);
         arrow.Initialize(_maxChargePower, _currentWeapon.ArrowType);
     }
@@ -73,7 +74,7 @@ public class Attacker : MonoBehaviour
         _currentWeaponArrowType = _currentWeapon.ArrowType;
 
         _animator.SetBool(_chargeAnimation, true);
-        _chargePower = 3;
+        _chargePower = 0;
 
         _charge = Charge(_currentWeapon.DrawedLineColor);
         StartCoroutine(_charge);

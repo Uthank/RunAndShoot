@@ -4,11 +4,18 @@ using TMPro;
 public class Upgrader : MonoBehaviour
 {
     [SerializeField] TMP_Text _textField;
+    [SerializeField] Material _materialGood;
+    [SerializeField] Material _materialBad;
 
-    private UpgradeGoodness _upgradeGoodness;
     private UpgradeTypes _upgradeType;
     private int _value;
     private string _text;
+    private Renderer _renderer;
+
+    private void Awake()
+    {
+        _renderer = GetComponent<Renderer>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,7 +27,6 @@ public class Upgrader : MonoBehaviour
 
     public void Initialize(UpgradeGoodness upgradeGoodness, UpgradeTypes upgradeTypes, int value)
     {
-        _upgradeGoodness = upgradeGoodness;
         _upgradeType = upgradeTypes;
         _value = value;
 
@@ -34,7 +40,17 @@ public class Upgrader : MonoBehaviour
                 break;
         }
 
-        _text = _text + _value;
+        _text += _value;
         _textField.text = _text;
+
+        switch (upgradeGoodness)
+        {
+            case UpgradeGoodness.Good:
+                _renderer.material = _materialGood;
+                break;
+            case UpgradeGoodness.Bad:
+                _renderer.material = _materialBad;
+                break;
+        }
     }
 }

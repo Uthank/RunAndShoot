@@ -43,7 +43,7 @@ public class Arrow : MonoBehaviour
                     {
                         enemy.Damage();
                         var particles = Instantiate(_hitParticleSystem, collision.GetContact(0).point, Quaternion.Euler(0, 180, 0) * transform.rotation);
-                        Destroy(particles, particles.main.duration);
+                        Destroy(particles.gameObject, particles.main.duration);
                     }
                     else
                     {
