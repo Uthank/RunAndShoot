@@ -8,9 +8,9 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: RoadFinish
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
-  m_ShaderKeywords: _CELPRIMARYMODE_SINGLE _GLOSSYREFLECTIONS_OFF _OVERRIDELIGHTMAPDIR_ON
-    _SPECULARHIGHLIGHTS_OFF _TEXTUREBLENDINGMODE_MULTIPLY _UNITYSHADOWMODE_NONE
+  m_Shader: {fileID: 4800000, guid: bee44b4a58655ee4cbff107302a3e131, type: 3}
+  m_ShaderKeywords: _CELPRIMARYMODE_NONE _GLOSSYREFLECTIONS_OFF _SPECULARHIGHLIGHTS_OFF
+    _TEXTUREBLENDINGMODE_MULTIPLY _UNITYSHADOWMODE_NONE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -70,7 +70,7 @@ Material:
     - _BumpScale: 1
     - _CelExtraEnabled: 0
     - _CelNumSteps: 3
-    - _CelPrimaryMode: 1
+    - _CelPrimaryMode: 0
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -115,7 +115,7 @@ Material:
     - _SrcBlend: 1
     - _Surface: 0
     - _TextureBlendingMode: 0
-    - _TextureImpact: 1
+    - _TextureImpact: 0
     - _UVSec: 0
     - _UnityShadowMode: 0
     - _UnityShadowPower: 0.395
@@ -123,8 +123,8 @@ Material:
     - _VertexColorsEnabled: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.99607843, g: 0.99607843, b: 0.99607843, a: 1}
-    - _ColorDim: {r: 0.518, g: 0.518, b: 0.518, a: 0.99215686}
+    - _Color: {r: 0.5803922, g: 0.56078434, b: 0.61, a: 1}
+    - _ColorDim: {r: 0.91764706, g: 0.9411765, b: 1, a: 0.99215686}
     - _ColorDimCurve: {r: 0.8, g: 0.6786024, b: 0.101960756, a: 1}
     - _ColorDimExtra: {r: 0.496, g: 0, b: 0.047034513, a: 1}
     - _ColorDimSteps: {r: 0.8784314, g: 0.7882353, b: 0.79607844, a: 1}

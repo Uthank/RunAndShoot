@@ -1247,6 +1247,8 @@ MonoBehaviour:
   _punchForce: 30
   _health: 70
   _HealthText: {fileID: 2401867378928986027}
+  _headRigifbody: {fileID: 1420804717}
+  _forceOnDeathPower: 200
 --- !u!114 &2479348372821339592
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -8,6 +8,10 @@ public class Boss : Enemy
     [SerializeField] private float _punchForce = 300;
     [SerializeField] private int _health = 70;
     [SerializeField] private TMP_Text _HealthText;
+    [SerializeField] private Rigidbody _headRigifbody;
+    [SerializeField] private float _forceOnDeathPower;
+
+    private Collider _collider;
 
     private EnemySpawner _enemySpawner;
     private FinishZone _finishZone;
@@ -18,6 +22,7 @@ public class Boss : Enemy
 
     private void Start()
     {
+        _collider = GetComponent<Collider>();
         OnHealthChanged.Invoke(_health);
     }
 
@@ -45,7 +50,9 @@ public class Boss : Enemy
         if (_health <= 0)
         {
             _HealthText.enabled = false;
+            _collider.enabled = false;
             base.Damage();
+            _headRigifbody.AddForce(Vector3.right * _forceOnDeathPower);
         }
 
         _health--;

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SecondSegment
   m_EditorClassIdentifier: 
   _upgradeSegment: {fileID: 11400000, guid: 106afefad2430634488de18aee4949d0, type: 2}
-  _leftUpgradeGoodness: 0
+  _leftGoodness: 0
   _leftUpgradeType: 0
   _leftValue: 4
   _rightGoodness: 1
@@ -23,10 +23,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}
   - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}
   - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}
-  - {fileID: 11400000, guid: 0460f8eca9ef5ab409ea52c029cdebc2, type: 2}
   - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}
-  - {fileID: 11400000, guid: acd2994219ac14841bddfb7d99e09598, type: 2}
+  - {fileID: 11400000, guid: b62b049958329b14e9d7f5d734d05d22, type: 2}
   - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}
+  - {fileID: 11400000, guid: 7717ef0de2bb49d42bd2b1dab5276634, type: 2}
   - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}
+  - {fileID: 11400000, guid: 724734f2753eee2488e9b5b266da1200, type: 2}
   - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}
   - {fileID: 11400000, guid: 7957bd1a293bf2b488258b0e6fc428e5, type: 2}

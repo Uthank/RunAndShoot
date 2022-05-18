@@ -65,7 +65,7 @@ MonoBehaviour:
   _boss: {fileID: -7882331634791355072, guid: 795cadc51a73b134e8ab946847c1ac00, type: 3}
   _bossSpawnOffset: {x: 7, y: 15.37, z: 0}
   _positioningSpeed: 10
-  _cameraPosition: {x: -127.54, y: 11.34, z: 0}
+  _cameraPosition: {x: -112.54, y: 11.34, z: 0}
 --- !u!114 &1753274
 MonoBehaviour:
   m_ObjectHideFlags: 0
